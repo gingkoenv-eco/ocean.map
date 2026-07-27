@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scotland Ocean Conservation Organisations</title>
+    
+    <!-- Mapbox GL JS CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css" rel="stylesheet" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #pattern-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .mapboxgl-popup-content {
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 320px;
+        }
+
+        .popup-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1f4e79;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #1f4e79;
+            padding-bottom: 6px;
+        }
+
+        .popup-section {
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .popup-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .popup-value {
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .popup-link {
+            color: #1f4e79;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .popup-link:hover {
+            text-decoration: underline;
+        }
+
+        .info-banner {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            font-size: 14px;
+            color: #333;
+            pointer-events: auto;
+        }
+
+        .info-banner button {
+            margin-top: 8px;
+            padding: 6px 12px;
+            background-color: #1f4e79;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        .info-banner button:hover {
+            background-color: #163a5f;
+        }
+
+        .mapboxgl-popup-tip {
+            border-top-color: white;
+        }
+
+        /* Side Panel Styles */
+        #side-panel {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 400px;
+            max-width: 100vw;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+            z-index: 150;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        #side-panel.open {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 480px) {
+            #side-panel {
+                width: 100vw;
+                padding: 16px;
+            }
+        }
+
+        #side-panel-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            z-index: 1;
+        }
+
+        #side-panel-close:hover {
+            color: #1f4e79;
+        }
+
+        .panel-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f4e79;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            padding-bottom: 10px;
+            padding-right: 40px;
+            border-bottom: 3px solid #1f4e79;
+        }
+
+        .panel-section {
+            margin: 16px 0;
+        }
+
+        .panel-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .panel-value {
+            color: #555;
+            line-height: 1.5;
+            font-size: 14px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .panel-title {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .volunteering-box {
+            background-color: #f0f7ff;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #1f4e79;
+            margin: 12px 0;
+        }
+
+        .volunteering-box .panel-label {
+            color: #1f4e79;
+        }
+
+        .panel-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #1f4e79;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-word;
+            background-color: #f0f7ff;
+            padding: 10px 14px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .panel-link:hover {
+            background-color: #e6eff7;
+        }
+
+        /* Legend Styles */
+        #legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 16px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .legend-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .legend-label {
+            color: #555;
+            text-transform: capitalize;
+        }
+
+        /* Organisation Type Badge */
+        .org-type-badge {
+            display: inline-block;
+            margin: 0 0 6px 0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: capitalize;
+            width: fit-content;
+        }
+
+        .org-type-conservation {
+            background-color: #e6f0f7;
+            color: #1f4e79;
+            border: 1px solid #a6d0e8;
+        }
+
+        .org-type-research {
+            background-color: #e8f8f0;
+            color: #1e7e34;
+            border: 1px solid #a8e6c1;
+        }
+
+        .org-type-marine-wildlife {
+            background-color: #e0f5f3;
+            color: #0f766e;
+            border: 1px solid #a0d9d1;
+        }
+
+        .org-type-cleanups {
+            background-color: #e0f4fa;
+            color: #0e7490;
+            border: 1px solid #9fd4e8;
+        }
+
+        .org-type-campaigning {
+            background-color: #f2e8fc;
+            color: #7c3aed;
+            border: 1px solid #cba6f0;
+        }
+
+        .org-type-education {
+            background-color: #fdf0e0;
+            color: #c2620a;
+            border: 1px solid #f0c78a;
+        }
+
+        .org-type-climate {
+            background-color: #f5e9df;
+            color: #92400e;
+            border: 1px solid #d9b28a;
+        }
+
+        .org-type-others {
+            background-color: #ffe8e8;
+            color: #c41c1c;
+            border: 1px solid #f5a8a8;
+        }
+
+        /* Search Bar Styles */
+        #city-search-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 101;
+            width: 320px;
+        }
+
+        #city-search-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 8px 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #search-logo {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center;
+            background-color: #1f4e79;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+        }
+
+        #search-logo span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #city-search {
+            flex: 1;
+            border: none;
+            padding: 10px 0;
+            font-size: 14px;
+            background-color: transparent;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #city-search:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        #city-search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            margin-top: -6px;
+            padding-top: 6px;
+            z-index: 102;
+        }
+
+        #city-search-dropdown.active {
+            display: block;
+        }
+
+        .city-dropdown-item {
+            padding: 10px 16px;
+            cursor: pointer;
+            color: #333;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .city-dropdown-item:hover {
+            background-color: #f0f7ff;
+            color: #1f4e79;
+        }
+
+        .city-dropdown-item.selected {
+            background-color: #e6eff7;
+            color: #1f4e79;
+            font-weight: 600;
+        }
+
+        .city-dropdown-header {
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: #fafafa;
+        }
+
+        /* Zoom Controls */
+        #zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 280px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .zoom-button {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1f4e79;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zoom-button:hover {
+            background-color: #f0f7ff;
+            border-color: #1f4e79;
+            box-shadow: 0 4px 12px rgba(31, 78, 121, 0.2);
+        }
+
+        .zoom-button:active {
+            transform: scale(0.95);
+        }
+
+        /* View Toggle Button */
+        #view-toggle {
+            position: fixed;
+            top: 130px;
+            left: 20px;
+            background-color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            font-size: 14px;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        #view-toggle:hover {
+            background-color: #f0f7ff;
+            color: #1f4e79;
+        }
+
+        /* Map View Button in Table */
+        #table-view-back-btn {
+            background-color: #1f4e79;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        #table-view-back-btn:hover {
+            background-color: #153a52;
+        }
+
+        /* Table View Container */
+        #table-view-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #table-view-container.active {
+            display: flex;
+        }
+
+        /* Table Header with Controls */
+        #table-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #ddd;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .table-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f4e79;
+        }
+
+        .table-controls-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .table-controls-close:hover {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .table-search-filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .table-search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .table-search-box:focus {
+            outline: none;
+            border-color: #1f4e79;
+            box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.1);
+        }
+
+        .filter-select {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #1f4e79;
+            box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.1);
+        }
+
+        .table-results-info {
+            font-size: 12px;
+            color: #666;
+            padding-top: 10px;
+        }
+
+        /* Table Content */
+        #table-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .table-row-card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .table-row-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: #1f4e79;
+        }
+
+        .table-row-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .table-row-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1f4e79;
+            flex: 1;
+        }
+
+        .table-row-type-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: capitalize;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .table-row-type-conservation {
+            background-color: #e6f0f7;
+            color: #1f4e79;
+            border: 1px solid #a6d0e8;
+        }
+
+        .table-row-type-research {
+            background-color: #e8f8f0;
+            color: #1e7e34;
+            border: 1px solid #a8e6c1;
+        }
+
+        .table-row-type-marine-wildlife {
+            background-color: #e0f5f3;
+            color: #0f766e;
+            border: 1px solid #a0d9d1;
+        }
+
+        .table-row-type-cleanups {
+            background-color: #e0f4fa;
+            color: #0e7490;
+            border: 1px solid #9fd4e8;
+        }
+
+        .table-row-type-campaigning {
+            background-color: #f2e8fc;
+            color: #7c3aed;
+            border: 1px solid #cba6f0;
+        }
+
+        .table-row-type-education {
+            background-color: #fdf0e0;
+            color: #c2620a;
+            border: 1px solid #f0c78a;
+        }
+
+        .table-row-type-climate {
+            background-color: #f5e9df;
+            color: #92400e;
+            border: 1px solid #d9b28a;
+        }
+
+        .table-row-type-others {
+            background-color: #ffe8e8;
+            color: #c41c1c;
+            border: 1px solid #f5a8a8;
+        }
+
+        .table-row-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .table-row-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .table-row-detail-label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .table-row-detail-value {
+            color: #333;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .table-row-detail-value a {
+            color: #1f4e79;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .table-row-detail-value a:hover {
+            text-decoration: underline;
+        }
+
+        .table-row-description {
+            color: #555;
+            line-height: 1.5;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+            font-style: italic;
+        }
+
+        .table-empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .table-empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .table-empty-state-text {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Pattern canvas (grey background with crosses) -->
+    <canvas id="pattern-canvas"></canvas>
+    
+    <!-- Map container -->
+    <div id="map"></div>
+    
+    <!-- City Search Bar -->
+    <div id="city-search-container">
+        <div id="city-search-bar">
+            <div id="search-logo" aria-hidden="true"><span>🌊</span></div>
+            <input 
+                type="text" 
+                id="city-search" 
+                placeholder="Search Scottish cities..."
+                autocomplete="off"
+            >
+        </div>
+        <div id="city-search-dropdown"></div>
+    </div>
+
+    <!-- Information banner -->
+    <div id="info-banner" class="info-banner">
+        <strong>🌊 Ocean Conservation in Scotland</strong>
+        <br>
+        <small>Click on points to learn more</small>
+        <br>
+        <button id="suggest-place-btn">Suggest a Place</button>
+    </div>
+
+    <!-- View Toggle Button -->
+    <button id="view-toggle">📊 Table View</button>
+
+    <!-- Side Panel for Details -->
+    <div id="side-panel">
+        <button id="side-panel-close">✕</button>
+        <div id="panel-content" style="padding-top: 30px;"></div>
+    </div>
+
+    <!-- Legend -->
+    <div id="legend">
+        <div class="legend-title">Type</div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #1f4e79;"></div>
+            <span class="legend-label">Conservation</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #14b8a6;"></div>
+            <span class="legend-label">Marine wildlife</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #17a2b8;"></div>
+            <span class="legend-label">Cleanups</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #9b59b6;"></div>
+            <span class="legend-label">Campaigning</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #e67e22;"></div>
+            <span class="legend-label">Education</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #a0522d;"></div>
+            <span class="legend-label">Climate</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #2ecc71;"></div>
+            <span class="legend-label">Research</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #e74c3c;"></div>
+            <span class="legend-label">Others</span>
+        </div>
+    </div>
+
+    <!-- Zoom Controls -->
+    <div id="zoom-controls">
+        <button class="zoom-button" id="zoom-in-btn" title="Zoom In">+</button>
+        <button class="zoom-button" id="zoom-out-btn" title="Zoom Out">−</button>
+    </div>
+
+    <!-- Table View Container -->
+    <div id="table-view-container">
+        <div id="table-header">
+            <div class="table-header-top">
+                <div class="table-title">📋 Organisations Database</div>
+                <div>
+                    <button id="table-view-back-btn">🗺️ Map View</button>
+                    <button class="table-controls-close" id="table-view-close">✕</button>
+                </div>
+            </div>
+            <div class="table-search-filter-bar">
+                <input type="text" id="table-search" class="table-search-box" placeholder="🔍 Search by name, email, or website...">
+                <select id="filter-type" class="filter-select">
+                    <option value="">All Types</option>
+                    <option value="conservation">Conservation</option>
+                    <option value="marine-wildlife">Marine wildlife</option>
+                    <option value="cleanups">Cleanups</option>
+                    <option value="campaigning">Campaigning</option>
+                    <option value="education">Education</option>
+                    <option value="climate">Climate</option>
+                    <option value="research">Research</option>
+                    <option value="others">Others</option>
+                </select>
+                <select id="filter-city" class="filter-select">
+                    <option value="">All Cities</option>
+                </select>
+            </div>
+            <div class="table-results-info">
+                <span id="table-results-count">0</span> organisations found
+            </div>
+        </div>
+        <div id="table-content">
+            <!-- Table rows will be populated here -->
+        </div>
+    </div>
+
+    <!-- Mapbox GL JS JavaScript library -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script>
+
+    <script>
+        // ============================================================
+        // PATTERN CANVAS - Grey background with crosses
+        // ============================================================
+
+        const canvas = document.getElementById('pattern-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size to window size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawPattern();
+        }
+
+        // Draw the pattern on grey background
+        function drawPattern() {
+            // Grey background
+            ctx.fillStyle = '#d3d3d3'; // Light grey
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw repeated plus pattern
+            const plusSize = 30; // Distance between plus signs
+            const plusWidth = 2; // Line thickness
+            const plusLength = 12; // Length of plus arms
+
+            ctx.strokeStyle = '#a9a9a9'; // Darker grey for plus signs
+            ctx.lineWidth = plusWidth;
+            ctx.lineCap = 'round';
+
+            // Draw plus signs across the entire canvas
+            for (let x = 0; x < canvas.width; x += plusSize) {
+                for (let y = 0; y < canvas.height; y += plusSize) {
+                    drawPlus(x, y, plusLength);
+                }
+            }
+        }
+
+        // Draw a single plus sign at given coordinates
+        function drawPlus(x, y, length) {
+            const half = length / 2;
+
+            // Horizontal line
+            ctx.beginPath();
+            ctx.moveTo(x - half, y);
+            ctx.lineTo(x + half, y);
+            ctx.stroke();
+
+            // Vertical line
+            ctx.beginPath();
+            ctx.moveTo(x, y - half);
+            ctx.lineTo(x, y + half);
+            ctx.stroke();
+        }
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', resizeCanvas);
+
+        // Initial canvas setup
+        resizeCanvas();
+
+        // ============================================================
+        // MAPBOX GL JS - Scotland Ocean Conservation Map
+        // ============================================================
+
+        // Set your Mapbox access token
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lua29lY28iLCJhIjoiY21taXphZTU5MTQwMjJxczgzdTR0MWdjOCJ9.x2DI85dEn6YpKewHBdiF2A';
+
+        // Initialize the map
+        const map = new mapboxgl.Map({
+            container: 'map', // Container ID from HTML
+            style: 'mapbox://styles/ginkoeco/cmn1qjpov00b901r0c24a6ibv', // Custom Mapbox style
+            center: [-4, 57], // Coordinates for Scotland [longitude, latitude]
+            zoom: 5, // Zoom level
+            pitch: 0, // No tilt
+            bearing: 0 // No rotation
+        });
+
+        // ============================================================
+        // ADD SOURCES AND LAYERS
+        // ============================================================
+
+        // Wait for the map to load before adding sources and layers
+        map.on('load', function () {
+            console.log('Map loaded successfully');
+
+            // ============================================================
+            // CITY SEARCH FUNCTIONALITY
+            // ============================================================
+
+            let allFeatures = [];
+            let allCities = [];
+
+            // Function to extract unique cities from features
+            function extractCities() {
+                const citySet = new Set();
+                allFeatures.forEach(feature => {
+                    const city = feature.properties.City;
+                    if (city) {
+                        citySet.add(city);
+                    }
+                });
+                allCities = Array.from(citySet).sort();
+            }
+
+            // Function to search cities using Mapbox Geocoding API
+            async function searchCities(searchText) {
+                const dropdown = document.getElementById('city-search-dropdown');
+                
+                if (!searchText.trim()) {
+                    dropdown.classList.remove('active');
+                    return;
+                }
+
+                try {
+                    // Scotland bounding box: [west, south, east, north]
+                    const bbox = '-7.5,54.4,-1.5,58.7';
+                    const response = await fetch(
+                        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(searchText)}.json?types=place&bbox=${bbox}&limit=8&access_token=pk.eyJ1IjoiZ2lua29lY28iLCJhIjoiY21taXphZTU5MTQwMjJxczgzdTR0MWdjOCJ9.x2DI85dEn6YpKewHBdiF2A`
+                    );
+                    const data = await response.json();
+
+                    if (!data.features || data.features.length === 0) {
+                        dropdown.innerHTML = '<div class="city-dropdown-item">No Scottish places found</div>';
+                        dropdown.classList.add('active');
+                        return;
+                    }
+
+                    let dropdownHTML = '<div class="city-dropdown-header">Scotland Results (' + data.features.length + ')</div>';
+                    data.features.forEach(feature => {
+                        const placeName = feature.place_name;
+                        const coords = feature.center;
+                        dropdownHTML += `<div class="city-dropdown-item" data-coords="${coords[0]},${coords[1]}" data-place="${placeName}">
+                            ${placeName}
+                        </div>`;
+                    });
+
+                    dropdown.innerHTML = dropdownHTML;
+                    dropdown.classList.add('active');
+
+                    // Add click handlers to dropdown items
+                    document.querySelectorAll('.city-dropdown-item[data-coords]').forEach(item => {
+                        item.addEventListener('click', function () {
+                            const coords = this.getAttribute('data-coords').split(',').map(Number);
+                            const placeName = this.getAttribute('data-place');
+                            zoomToCity(coords, placeName);
+                        });
+                    });
+                } catch (error) {
+                    console.error('Geocoding error:', error);
+                    dropdown.innerHTML = '<div class="city-dropdown-item">Error searching Scottish places</div>';
+                    dropdown.classList.add('active');
+                }
+            }
+
+            // Function to zoom to selected city
+            function zoomToCity(coords, placeName) {
+                const searchInput = document.getElementById('city-search');
+                searchInput.value = placeName;
+                document.getElementById('city-search-dropdown').classList.remove('active');
+
+                // Zoom to the city
+                map.flyTo({
+                    center: coords,
+                    zoom: 12,
+                    duration: 2000
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                const container = document.getElementById('city-search-container');
+                if (!container.contains(e.target)) {
+                    document.getElementById('city-search-dropdown').classList.remove('active');
+                }
+            });
+
+            // Search input event listener
+            document.getElementById('city-search').addEventListener('input', function (e) {
+                searchCities(e.target.value);
+            });
+
+            // Open dropdown on focus
+            document.getElementById('city-search').addEventListener('focus', function () {
+                if (this.value.trim()) {
+                    searchCities(this.value);
+                }
+            })
+
+            // Add the tileset as a vector source
+            map.addSource('organisations-source', {
+                type: 'vector',
+                url: 'mapbox://ginkoeco.4hfkls73' // Tileset URL
+            });
+
+// Add a simple circle layer with color coding by Organisation Type / Type
+            map.addLayer({
+                id: 'organisations-layer',
+                type: 'circle',
+                source: 'organisations-source',
+                'source-layer': 'test_data-590jpx',
+                minzoom: 0,
+                maxzoom: 22,
+                paint: {
+                    // Keep points visible at all zoom levels with controlled scaling
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        0, 5,
+                        6, 6,
+                        10, 7,
+                        14, 8,
+                        18, 9,
+                        22, 10
+                    ],
+                    // Many entries have multiple comma-separated Type values
+                    // (e.g. "research, conservation" or "education, Marine wildlife").
+                    // A pin can only show one color, so we check for each of the 7
+                    // categories in a fixed priority order and use the first match.
+                    'circle-color': [
+                        'case',
+                        ['in', 'conservation', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#1f4e79', // conservation - deep ocean blue
+                        ['in', 'marine wildlife', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#14b8a6', // marine wildlife - teal
+                        ['in', 'cleanups', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#17a2b8', // cleanups - cyan
+                        ['in', 'campaigning', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#9b59b6', // campaigning - purple
+                        ['in', 'education', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#e67e22', // education - orange
+                        ['in', 'climate', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#a0522d', // climate - brown
+                        ['in', 'research', ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']]], '#2ecc71', // research - green
+                        '#e74c3c' // others / unrecognized - red
+                    ],
+                    'circle-opacity': 0.95,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff',
+                    'circle-pitch-alignment': 'map',
+                    'circle-pitch-scale': 'map'
+                }
+            });
+
+            // Wait for data to be loaded before extracting cities
+            let citiesExtracted = false;
+            
+            function tryExtractCities() {
+                if (citiesExtracted) return;
+                
+                const features = map.querySourceFeatures('organisations-source', {
+                    sourceLayer: 'test_data-590jpx'
+                });
+                
+                if (features && features.length > 0) {
+                    allFeatures = features;
+                    extractCities();
+                    citiesExtracted = true;
+                    console.log('Extracted cities:', allCities);
+                }
+            }
+            
+            // Try to extract cities when tiles are loaded
+            map.on('sourcedata', function(e) {
+                if (e.sourceId === 'organisations-source' && !citiesExtracted) {
+                    tryExtractCities();
+                }
+            });
+            
+            // Also try after a short delay to ensure tiles have loaded
+            setTimeout(tryExtractCities, 500);
+
+            // Change cursor to pointer when hovering over points
+            map.on('mouseenter', 'organisations-layer', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'organisations-layer', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            // Individual point click - zoom in and open side panel
+            map.on('click', 'organisations-layer', function (e) {
+                const properties = e.features[0].properties;
+                const coords = e.features[0].geometry.coordinates.slice();
+                const currentZoom = map.getZoom();
+                const targetZoom = Math.min(Math.max(currentZoom + 2, 12), 16);
+
+                map.flyTo({
+                    center: coords,
+                    zoom: targetZoom,
+                    duration: 1200,
+                    essential: true
+                });
+
+                openSidePanel(properties);
+            });
+
+            // Close button functionality
+            document.getElementById('side-panel-close').addEventListener('click', function () {
+                document.getElementById('side-panel').classList.remove('open');
+            });
+
+            // Zoom controls
+            document.getElementById('zoom-in-btn').addEventListener('click', function () {
+                map.zoomIn();
+            });
+
+            document.getElementById('zoom-out-btn').addEventListener('click', function () {
+                map.zoomOut();
+            });
+
+            // ============================================================
+            // SIDE PANEL INTERACTION
+            // ============================================================
+
+            // Function to open side panel with organisation details
+            function openSidePanel(properties) {
+                let panelHTML = '';
+
+                // Add organisation type badge first (above title)
+                const typeValue = properties['Type'] || properties['Organisation Type'];
+                if (typeValue) {
+                    const badgeClass = 'org-type-badge ' + getPrimaryTypeClass(typeValue, 'org-type-');
+                    panelHTML += `<div class="${badgeClass}">${typeValue}</div>`;
+                }
+
+                // Add title/name
+                panelHTML += `<div class="panel-title">${properties.Name || 'Organisation'}</div>`;
+
+                // Add description if available
+                if (properties.Description) {
+                    panelHTML += `
+                        <div class="panel-section">
+                            <div class="panel-value">${properties.Description}</div>
+                        </div>
+                    `;
+                }
+
+                // Add volunteering information (prominently displayed)
+                if (properties.Volunteering) {
+                    panelHTML += `
+                        <div class="panel-section volunteering-box">
+                            <div class="panel-label">🤝 Volunteering:</div>
+                            <div class="panel-value">${properties.Volunteering}</div>
+                        </div>
+                    `;
+
+                    // Add volunteering details if available
+                    const volunteeringDetails = properties.Volunteering_details || properties.volunteering_details;
+                    if (volunteeringDetails) {
+                        panelHTML += `
+                            <div class="panel-section">
+                                <div class="panel-label">Volunteering Details:</div>
+                                <div class="panel-value">${volunteeringDetails}</div>
+                            </div>
+                        `;
+                    }
+                }
+
+                // Add city/location if available
+                if (properties.City) {
+                    panelHTML += `
+                        <div class="panel-section">
+                            <div class="panel-label">📍 Location:</div>
+                            <div class="panel-value">${properties.City}</div>
+                        </div>
+                    `;
+                }
+
+                // Add email if available
+                if (properties.Email) {
+                    panelHTML += `
+                        <div class="panel-section">
+                            <div class="panel-label">📧 Email:</div>
+                            <div class="panel-value"><a href="mailto:${properties.Email}" style="color: #1f4e79; text-decoration: none;">${properties.Email}</a></div>
+                        </div>
+                    `;
+                }
+
+                // Add phone if available
+                if (properties.Phone) {
+                    panelHTML += `
+                        <div class="panel-section">
+                            <div class="panel-label">📱 Phone:</div>
+                            <div class="panel-value"><a href="tel:${properties.Phone}" style="color: #1f4e79; text-decoration: none;">${properties.Phone}</a></div>
+                        </div>
+                    `;
+                }
+
+                // Add website link if available
+                if (properties.Website) {
+                    // Ensure the URL has a protocol
+                    let websiteUrl = properties.Website;
+                    if (!websiteUrl.startsWith('http://') && !websiteUrl.startsWith('https://')) {
+                        websiteUrl = 'https://' + websiteUrl;
+                    }
+                    
+                    panelHTML += `
+                        <div class="panel-section">
+                            <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" class="panel-link">
+                                🌐 Visit Website
+                            </a>
+                        </div>
+                    `;
+                }
+
+                // Add suggestion section
+                panelHTML += `
+                    <div class="panel-section">
+                        <div class="panel-label">💡 Know another place?</div>
+                        <div class="panel-value">Help us grow this map by suggesting ocean conservation organisations in Scotland.</div>
+                        <a href="https://tally.so/r/pbW4NZ" target="_blank" rel="noopener noreferrer" class="panel-link">
+                            📝 Suggest a Place
+                        </a>
+                    </div>
+                `;
+
+                // Update panel content and open it
+                document.getElementById('panel-content').innerHTML = panelHTML;
+                document.getElementById('side-panel').classList.add('open');
+            }
+
+            console.log('Setup complete');
+        });
+
+        // ============================================================
+        // ERROR HANDLING
+        // ============================================================
+
+        map.on('error', function (error) {
+            console.error('Map error:', error);
+        });
+
+        // ============================================================
+        // TABLE VIEW FUNCTIONALITY
+        // ============================================================
+
+        // Full dataset embedded directly from the clean CSV. The table view used to
+        // pull data from whatever vector tiles happened to be loaded in the map's
+        // current viewport (via queryRenderedFeatures / querySourceFeatures), which
+        // meant that after flying to a clicked point (or on distant zoom levels),
+        // most other entries weren't loaded yet and silently disappeared from the
+        // table. Using this embedded dataset instead guarantees every entry always
+        // shows up, regardless of map state.
+        // NOTE: if you add/edit organisations in the CSV, regenerate this array so
+        // it stays in sync with the Mapbox tileset used for the map pins.
+        const EMBEDDED_ORGANISATIONS = [{"Name": "Berwickshire Marine Reserve", "Type": "conservation", "Description": "Berwickshire Marine Reserve is a community-led marine protected area on the southeast coast of Scotland that promotes the conservation, sustainable use, and public enjoyment of its rich coastal and marine environment. It works with local communities, researchers, divers, and visitors to protect biodiversity, support education, and encourage responsible access to the marine ecosystem.", "Website": "https://www.berwickshiremarinereserve.org.uk/", "Email": "info@berwickshiremarinereserve.org.uk", "Phone": "4401890752509", "City": "Eyemouth", "Volunteering": "yes", "Volunteering_details": "Offers volunteer opportunities in marine conservation, community engagement, citizen science, coastal surveys, and environmental education."}, {"Name": "St Abbs Marine Station", "Type": "research, conservation", "Description": "St Abbs Marine Station is an independent marine research facility that supports world-class scientific research, education, and innovation in marine biology and coastal ecology. Based in St Abbs, it provides laboratory facilities, field support, and access to diverse marine habitats for researchers, students, and collaborative projects.", "Website": "https://marinestation.co.uk/", "Email": "hello@marinestation.co.uk", "Phone": "4401890771688", "City": "St Abbs", "Volunteering": "yes", "Volunteering_details": "Offers volunteer opportunities supporting marine research, education, public outreach, fieldwork, and conservation projects, depending on current programmes and operational needs."}, {"Name": "Community of Arran Seabed Trust", "Type": "conservation", "Description": "COAST is a community-led marine conservation charity that works to protect and restore the seas around the Isle of Arran through scientific research, education, and community engagement. It is best known for leading the campaign that established Scotland's first No Take Zone in Lamlash Bay and continues to advocate for effective marine protection and sustainable management.", "Website": "https://www.arrancoast.com/", "Email": "email@arrancoast.com", "Phone": "4401770600656", "City": "Lamlash", "Volunteering": "yes", "Volunteering_details": "You can get involved on many levels, whether you want to come along to  weekly beach cleans in Arran, work in the COAST office or Discovery Centre for a month or two, or do some desk research and campaigning from home. You do not have to live on the island to get involved!"}, {"Name": "Action West Loch", "Type": "conservation", "Description": "A community-based group dedicated to promoting awareness and a sense of connection to the land and water belonging to West Loch Tarbert – a sea loch feeding into the Sound of Gigha on the west coast of Scotland between Knapdale and the Kintyre peninsula.", "Website": "https://www.actionwestloch.co.uk/", "Email": "contact@actionwestloch.scot", "Phone": "", "City": "", "Volunteering": "not sure", "Volunteering_details": ""}, {"Name": "Carna Coast and Communities", "Type": "education, Marine wildlife, conservation", "Description": "We are a Scottish Charitable Incorporated Organisation (SCIO), founded in 2025 to protect and regenerate the rich biodiversity of the Isle of Carna and the surrounding land, coasts, and waters of Loch Sunart, Loch Teacuis, and Loch Drom Bhuidhe.\nBy linking marine and terrestrial conservation, we encourage people to see the landscape as a whole and bring together diverse conservation groups working for a more sustainable future.", "Website": "https://www.carnacoastandcommunities.org/contact", "Email": "", "Phone": "", "City": "isle of Carna", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Charlestown, Limekilns and Pattiesmuir (CLP) Nature Action", "Type": "education, campaigning", "Description": "CLP Nature Action was founded in 2018. Across the West Fife villages of Charlestown, Limekilns, Pattiesmuir, through positive effective collaboration, we seek to deliver nature conservation and restoration projects, offer inclusive volunteer and engagement opportunities for our community to take action for nature and work to make our villages more sustainable for the long term.", "Website": "https://www.facebook.com/clpnatureaction/", "Email": "clpnaturegroup@gmail.com", "Phone": "", "City": "Limekilns", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Clean Coast Outer Hebrides", "Type": "conservation, cleanups, campaigning, education", "Description": "Clean Coast Outer Hebrides (CCOH) was set up in 2018 by a group of people concerned about the growing issue of plastic waste, and it’s effect on the coasts of the Outer Hebrides. CCOH are actively supporting, organising, leading, and participating in beach cleaning around the Outer Hebrides.", "Website": "https://www.cleancoastoh.com/", "Email": "hello@cleancoastoh.com", "Phone": "", "City": "Outer herbridies", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "CLIMAVORE", "Type": "education, research, conservation", "Description": "CLIMAVORE is a Community Interest Company based in the Isle of Skye and Raasay that collaborates with local residents, schools, restaurants, and international researchers and activists, to share new approaches to regenerative sea-farming and food waste. This work has been acknowledged by multiple awards, including nominations for the 2021 Turner Prize, the Visible Award, and the Special Award at the Future Generation Art Prize.\n\nOur mission is to create ways of living on and with the coast as humans change the climate. We aim to empower coastal communities, who are custodians of their land, culture and futures, to review local food and food waste systems and drive a just transition in the wake of the climate and biodiversity crises.", "Website": "https://www.climavore.org/", "Email": "", "Phone": "", "City": "Isle of Skye and Raasay", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Common Ground North", "Type": "campaigning, education", "Description": "Common Ground is a newly formed, community-led organisation fostering self-determination along the North West Sutherland coast. We create opportunities for people to connect — to each other, to the land, and to our shared stories — through projects ranging from our Ruins to Seeds series, exploring how history shapes present-day choices, to the development of a mobile sauna as a space for rest and reconnection. Our aim is to nurture belonging, strengthen community voice, and explore new, inclusive ways of living well in a rural setting. Looking ahead, we hope to grow projects that are accessible, sustainable, and deeply rooted in the land and waters that sustain us.", "Website": "", "Email": "", "Phone": "", "City": "North West Sutherland coast", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Community Association of Lochs and Sounds (CAOLAS)", "Type": "education, conservation, campaigning", "Description": "CAOLAS (also Gaelic for ‘narrow neck of water’) stands for the Loch Sunart and Sound of Mull ‘Community Association of Lochs and Sounds’.  CAOLAS came together in 2015 following the designation of Loch Sunart and the Sound of Mull as Marine Protected Areas. It aims to raise awareness of the unique marine environment and to encourage community involvement in its protection, preservation and sustainability. In 2017 CAOLAS was formally constituted as a Scottish Charitable Incorporated Organisation (SCIO).\n\nSince then, CAOLAS have been developing a programme of education and activities – with local and national expertise – that shows people what wonderful marine life there is in Loch Sunart and the Sound of Mull. CAOLAS also run the Lochaline Native Oyster Project, which aims to restore native oysters to Lochaline. Up to 20,000 native oysters will be grown in suspended cages beneath floating pontoons until sufficiently mature and then released onto the Lochaline seabed in areas where they were formerly found.", "Website": "https://caolas.org/", "Email": "admin@caolas.org", "Phone": "", "City": "Morvern, Ardnamurchan, Sunart, Mull", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Cove & Kilcreggan Clearwater Group", "Type": "research, cleanups, conservation", "Description": "The Clearwater Group are based in the villages of Cove and Kilcreggan on the  Rosneath Peninsula. They are a group of like minded people who aspire to preserve their coastline that is under threat from detrimental sewage and damaging fishing practices. Find out more about Cove & Kilcreggan Clearwater Group on their website!", "Website": "https://www.coveandkilcreggancommunity.com/community-groups/clearwater-group", "Email": "clearwater@coveandkilcreggancommunity.com", "Phone": "", "City": "Cove and Kilcreggan", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Craignish Restoration of Marine and Coastal Habitat (CROMACH)", "Type": "conservation, Marine wildlife, campaigning", "Description": "Craignish Restoration of Marine and Coastal Habitats (CROMACH) is a community group based in Loch Craignish on the west coast of Scotland. It was established to give local people a voice in local marine management. It aims to encourage and promote sustainable use of local waters for recreation, fishing and other marine activities whilst allowing recovery of biodiversity and natural processes in Loch Craignish, the Sound of Jura and the Firth of Lorn. CROMACH also raises awareness within the community on marine issues and seeks to carry out research, surveys and investigations of the local marine environment.\n\nIn 2019, CROMACH came together with other Argyll communities to sucessfully achieve the first Mission Blue Hope Spot in Scotland, and mainland UK, the Argyll Coast and Islands Hope Spot.\n\nIn 2020, CROMACH and other organisations set up the Seawilding project, which aims to advance the environmental protection and improvement of Scottish coastal waters by developing and delivering projects to restore degraded marine habitats and species, including native oysters and other priority marine features around coastal shorelines.", "Website": "https://www.cromach.org/", "Email": "info@cromach.org", "Phone": "", "City": "Loch Craignish", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Dunoon Community Development Trust", "Type": "education, climate", "Description": "Dunoon Community Development Trust (DCDT) has been established to support sustainable development. As a coastal community this includes the protection of the marine environment and coastal biodiversity. Over the past few years, we have been developing a greater understanding of how to protect our local marine environment and have supported beach cleans and research around the management of the shingle beach in the town centre at West Bay.\n\nDCDT was established with the support of SURF, Scotland’s Regeneration Forum and works in partnership with Argyll and Bute Council to support and inform the regeneration of the town in alignment with the goal of sustainable development", "Website": "https://www.dunooncdt.org/", "Email": "ann@dunooncdt.org", "Phone": "", "City": "Dunoon", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "East Haven Together", "Type": "campaigning, cleanups", "Description": "East Haven is one of the earliest recorded fishing communities in Scotland, dating back to 1214. The octocentenary of the village was celebrated with a wide range of gardening and heritage projects in 2014 and a new charity, called East Haven Together, was subsequently launched in 2015.  A sustainability strategy linked to the United Nations Global Development Goals underpins the charitable aims of East Haven Together.\n\nEast Haven Together works on a number of different levels to protect the marine environment. The charity works collaboratively with other groups, businesses and schools along the Angus coast.  Since 2015, EHT has raised a number of issues at UK and Scottish Government level in an attempt to influence policy and legislative change. For example, we have worked to reduce the amount of ghost fishing gear lost through sabotage and have met with fishing industry leaders. More recently we have shone a light on the weakness of MARPOL regulations which allow military ships to dump waste unnecessarily in peace time. We are involved in everything from littering to pollution, disposal of marine waste and chemical contamination.", "Website": "https://www.easthavenangus.com/", "Email": "easthaventogether@gmail.com", "Phone": "", "City": "East Haven", "Volunteering": "yes", "Volunteering_details": "Volunteering\nOpportunities\nNamed Drivers for ATV\n\nMeetings - Consultation\n\nCaring for our Public Toilets\n\nGardens - Wildlife- Nature\n\nCoastal Resilience\n\nRoads - Drains - Paths\n\nBaking - Sewing - Leaflets\n\nIT - web-site management"}, {"Name": "Edinburgh Shoreline", "Type": "conservation, cleanups, campaigning, research", "Description": "The Edinburgh Shoreline project was officially launched in February 2018 with Heritage Lottery Fund and NatureScot (then SNH) funding and overarching management by Royal Botanic Gardens Edinburgh (RBGE). The aim of the project was to help improve access to and raise awareness of the cultural and environmental heritage of the city’s 27k shoreline, many stretches of which had been neglected for a long time.\n\nProject staff surveyed species, ran workshops, worked with schools, documented memories, filmed the whole Edinburgh shoreline by drone, produced an awareness raising film and held exhibitions in the main exhibition hall at RBGE.  This part of the project is complete and the group are now involved with the Restoration Forth project, which seeks to create thriving seagrass meadows and native oyster populations in the Firth of Forth.", "Website": "https://edinburghshoreline.org.uk/get-involved/", "Email": "karen@edinburghshoreline.org.uk", "Phone": "", "City": "Edinburgh", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Eigg Environmental Action Group", "Type": "conservation, campaigning, education, cleanups", "Description": "The Eigg Environmental Action Group is a community group based on the Isle of Eigg. Their mission is to work together to protect and enhance the quality of their island through community empowerment and sustainable action. Core projects include monthly beach cleans and promoting awareness about marine pollution. The community also successfully opposed proposals for a fish farm.\n\nThe Isle of Eigg is the second largest of the small isles, within the Small Isles Nature Conservation Marine Protected Area (MPA) – home to the UK’s only known colony of rare fan mussels.  This is one of Scotland’s most diverse and valuable seabed habitats.", "Website": "https://isleofeigg.org/2020/10/eigg-environmental-action/", "Email": "", "Phone": "", "City": "Isle of Eigg", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Fair Isle Marine Research Organisation (FIMRO)", "Type": "conservation", "Description": "Fair Isle has a wide range of maritime attributes and issues which are important and deserve urgent measures for these assets to be safeguarded. The Fair Isle Marine Environment and Tourism Initiative (FIMETI) was set up in 1995 by the people of Fair Isle to help achieve this.\n\nIn November 2017 Fair Isle’s seas were designated as the first Demonstration & Research Marine Protected Area (DR MPA) in Scotland. This community-developed site is now set up to research the ecological features and impacts on local seabird populations and the wider marine environment whilst also studying the socio-economic value of a healthy marine environment and partnership-led management. In 2018, the Fair Isle Marine Research Organisation (FIMRO) was established, formally replacing the FIMETI.", "Website": "https://www.fimeti.org.uk/aboutfairisle.asp", "Email": "", "Phone": "", "City": "Fair Isle", "Volunteering": "no", "Volunteering_details": ""}, {"Name": "Fisherrow Harbour & Seafront Association", "Type": "conservation, campaigning", "Description": "Established in 2019 to give local organisations a stronger voice, the Fisherrow Harbour & Seafront Association is a small community-based charity run by trustees, who are the main volunteers, and supported by our members. We all care about the sea, coastline and infrastructure around our local area, and strive to protect and celebrate it.", "Website": "https://www.fhsa.org.uk/", "Email": "secretary@fhsa.org.uk", "Phone": "", "City": "Musselburgh", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Friends of Loch Hourn", "Type": "conservation", "Description": "Established in 2020, Friends of Loch Hourn has over 100 members including residents, landowners, fishermen and others with a strong connection to the affairs affecting the marine ecology of Loch Hourn.  The purpose of The Friends of Loch Hourn is the advancement of environmental protection and ecological sustainability with particular reference to Loch Hourn and the surrounding area.", "Website": "https://www.friendsoflochhourn.org.uk/join-us/", "Email": "", "Phone": "", "City": "Loch Hourn", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Friends of the Sound of Jura", "Type": "education", "Description": "Friends of the Sound of Jura is a community group and registered Scottish charity based in Knapdale, mid-Argyll, an area bounded on three sides by the sea. It seeks to protect the Sound, the River Add and their local users from threats to the area’s wildlife and local economy.\n\nFriends of the Sound of Jura coalesced to object to a fish farm proposal being suddenly imposed in an inappropriate place where it would harm marine life and the community. We soon realised how rare it is for the opinions of coastal people to be heard or given due weight in the planning process. As a result, the group now intends to inform and help their local community to express its opinions and to campaign more widely for marine conservation and the sustainable use of the sea we all share.", "Website": "https://friendsofthesoundofjura.org.uk/", "Email": "", "Phone": "", "City": "Knapdale, mid-Argyll", "Volunteering": "yes", "Volunteering_details": ""}, {"Name": "Kintyre Coastal Network", "Type": "conservation, cleanups, research", "Description": "Kintyre Coastal Network is a newly formed marine conservation group based in Kintyre. They aim to locate and survey existing seagrass beds with a view to establish a programme of protection and regeneration.", "Website": "https://www.kintyrecoastalnetwork.org/volunteering", "Email": "kintyrecoastalnetwork@gmail.com", "Phone": "", "City": "Kintyre", "Volunteering": "yes", "Volunteering_details": ""}];
+
+        let allOrganisations = [];
+        let filteredOrganisations = [];
+        const mapFilterState = {
+            type: '',
+            city: ''
+        };
+
+        function applyMapFilters() {
+            const filterExpressions = ['all'];
+
+            if (mapFilterState.type) {
+                const typeExpr = ['downcase', ['coalesce', ['get', 'Type'], ['get', 'Organisation Type'], 'others']];
+                // Same priority order as the circle-color paint expression and
+                // getPrimaryTypeClass(): conservation > marine wildlife > cleanups >
+                // campaigning > education > climate > research > others.
+                const categoryOrder = ['conservation', 'marine wildlife', 'cleanups', 'campaigning', 'education', 'climate', 'research'];
+                const categoryKeys = ['conservation', 'marine-wildlife', 'cleanups', 'campaigning', 'education', 'climate', 'research'];
+                const selectedIndex = categoryKeys.indexOf(mapFilterState.type);
+
+                if (selectedIndex === -1) {
+                    // "others": none of the known categories are present
+                    filterExpressions.push(['all', ...categoryOrder.map(cat => ['!', ['in', cat, typeExpr]])]);
+                } else {
+                    // Must contain the selected category AND none of the higher-priority categories
+                    const conditions = [['in', categoryOrder[selectedIndex], typeExpr]];
+                    for (let i = 0; i < selectedIndex; i++) {
+                        conditions.push(['!', ['in', categoryOrder[i], typeExpr]]);
+                    }
+                    filterExpressions.push(['all', ...conditions]);
+                }
+            }
+
+            if (mapFilterState.city) {
+                filterExpressions.push([
+                    '==',
+                    ['get', 'City'],
+                    mapFilterState.city
+                ]);
+            }
+
+            map.setFilter('organisations-layer', filterExpressions);
+        }
+
+        function syncTableFilterUI() {
+            document.getElementById('filter-type').value = mapFilterState.type;
+            document.getElementById('filter-city').value = mapFilterState.city;
+        }
+
+        function resetAllFilters() {
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-city').value = '';
+            mapFilterState.type = '';
+            mapFilterState.city = '';
+            filterOrganisations();
+            applyMapFilters();
+        }
+
+        // Shared classifier: many entries have multiple comma-separated Type
+        // values (e.g. "research, conservation, education"). A badge/dot can only
+        // show one color, so we check for each of the 7 categories in a fixed
+        // priority order and use the first match. This priority order must stay in
+        // sync with the map's circle-color paint expression above.
+        // `prefix` lets callers reuse this for either "table-row-type-" or "org-type-" class names.
+        function getPrimaryTypeClass(type, prefix) {
+            const typeLC = (type || '').toLowerCase();
+            if (typeLC.includes('conservation')) return prefix + 'conservation';
+            if (typeLC.includes('marine wildlife')) return prefix + 'marine-wildlife';
+            if (typeLC.includes('cleanups')) return prefix + 'cleanups';
+            if (typeLC.includes('campaigning')) return prefix + 'campaigning';
+            if (typeLC.includes('education')) return prefix + 'education';
+            if (typeLC.includes('climate')) return prefix + 'climate';
+            if (typeLC.includes('research')) return prefix + 'research';
+            return prefix + 'others';
+        }
+
+        // Function to get badge class based on type
+        function getTypeBadgeClass(type) {
+            return getPrimaryTypeClass(type, 'table-row-type-');
+        }
+
+        // Function to get the primary category a type string belongs to
+        // (used for filtering by "conservation" / "research" / "others")
+        function getPrimaryCategory(type) {
+            return getPrimaryTypeClass(type, '');
+        }
+
+        // Function to get type value (prioritize 'Type' field) - full display text
+        function getTypeValue(properties) {
+            return properties['Type'] || properties['Organisation Type'] || 'Others';
+        }
+
+        // Function to load all organisations for the table.
+        // Uses the embedded dataset (see EMBEDDED_ORGANISATIONS above) rather than
+        // querying the map's currently loaded vector tiles. Querying the map was
+        // unreliable because Mapbox only keeps tiles for the current viewport/zoom
+        // in memory - e.g. after clicking a point (which flies the map to that
+        // location at a high zoom), only nearby entries were loaded, so most other
+        // organisations silently disappeared from the table.
+        function loadAllOrganisations() {
+            if (allOrganisations.length > 0) return; // Already loaded
+
+            if (EMBEDDED_ORGANISATIONS.length > 0) {
+                allOrganisations = EMBEDDED_ORGANISATIONS.slice();
+                filteredOrganisations = allOrganisations.slice();
+                populateCityFilter();
+                renderTable();
+                console.log('Loaded', allOrganisations.length, 'organisations from embedded dataset');
+            } else {
+                console.error('No embedded organisations data found');
+                document.getElementById('table-content').innerHTML = `
+                    <div class="table-empty-state">
+                        <div class="table-empty-state-icon">⚠️</div>
+                        <div class="table-empty-state-text">Unable to load data</div>
+                        <div>Please try again or refresh the page</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Function to populate city filter
+        function populateCityFilter() {
+            const cities = new Set();
+            allOrganisations.forEach(org => {
+                if (org.City) cities.add(org.City);
+            });
+
+            const citiesArray = Array.from(cities).sort();
+            const filterCity = document.getElementById('filter-city');
+            const currentFilter = filterCity.value;
+
+            citiesArray.forEach(city => {
+                if (!filterCity.querySelector(`option[value="${city}"]`)) {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    filterCity.appendChild(option);
+                }
+            });
+
+            filterCity.value = currentFilter;
+        }
+
+        // Function to filter and search organisations
+        function filterOrganisations() {
+            const searchText = document.getElementById('table-search').value.toLowerCase();
+            const typeFilter = document.getElementById('filter-type').value.toLowerCase();
+            const cityFilter = document.getElementById('filter-city').value;
+
+            mapFilterState.type = typeFilter;
+            mapFilterState.city = cityFilter;
+            applyMapFilters();
+
+            filteredOrganisations = allOrganisations.filter(org => {
+                // Search filter
+                const matchesSearch = !searchText || 
+                    (org.Name && org.Name.toLowerCase().includes(searchText)) ||
+                    (org.Email && org.Email.toLowerCase().includes(searchText)) ||
+                    (org.Website && org.Website.toLowerCase().includes(searchText)) ||
+                    (org.Description && org.Description.toLowerCase().includes(searchText));
+
+                // Type filter (uses same priority classification as the map dots/badges)
+                const matchesType = !typeFilter || getPrimaryCategory(getTypeValue(org)) === typeFilter;
+
+                // City filter
+                const matchesCity = !cityFilter || org.City === cityFilter;
+
+                return matchesSearch && matchesType && matchesCity;
+            });
+
+            renderTable();
+        }
+
+        // Function to render the table
+        function renderTable() {
+            const tableContent = document.getElementById('table-content');
+            const resultsCount = document.getElementById('table-results-count');
+
+            resultsCount.textContent = filteredOrganisations.length;
+
+            if (filteredOrganisations.length === 0) {
+                tableContent.innerHTML = `
+                    <div class="table-empty-state">
+                        <div class="table-empty-state-icon">🔍</div>
+                        <div class="table-empty-state-text">No organisations found</div>
+                        <div>Try adjusting your filters or search terms</div>
+                    </div>
+                `;
+                return;
+            }
+
+            tableContent.innerHTML = filteredOrganisations.map(org => {
+                const type = getTypeValue(org);
+                const typeBadgeClass = getTypeBadgeClass(type);
+                
+                let detailsHTML = '';
+
+                if (org.City) {
+                    detailsHTML += `
+                        <div class="table-row-detail-item">
+                            <div class="table-row-detail-label">📍 Location</div>
+                            <div class="table-row-detail-value">${org.City}</div>
+                        </div>
+                    `;
+                }
+
+                if (org.Email) {
+                    detailsHTML += `
+                        <div class="table-row-detail-item">
+                            <div class="table-row-detail-label">📧 Email</div>
+                            <div class="table-row-detail-value"><a href="mailto:${org.Email}">${org.Email}</a></div>
+                        </div>
+                    `;
+                }
+
+                if (org.Phone) {
+                    detailsHTML += `
+                        <div class="table-row-detail-item">
+                            <div class="table-row-detail-label">📱 Phone</div>
+                            <div class="table-row-detail-value"><a href="tel:${org.Phone}">${org.Phone}</a></div>
+                        </div>
+                    `;
+                }
+
+                if (org.Website) {
+                    let websiteUrl = org.Website;
+                    if (!websiteUrl.startsWith('http://') && !websiteUrl.startsWith('https://')) {
+                        websiteUrl = 'https://' + websiteUrl;
+                    }
+                    detailsHTML += `
+                        <div class="table-row-detail-item">
+                            <div class="table-row-detail-label">🌐 Website</div>
+                            <div class="table-row-detail-value"><a href="${websiteUrl}" target="_blank" rel="noopener noreferrer">${org.Website}</a></div>
+                        </div>
+                    `;
+                }
+
+                if (org.Volunteering) {
+                    detailsHTML += `
+                        <div class="table-row-detail-item">
+                            <div class="table-row-detail-label">🤝 Volunteering</div>
+                            <div class="table-row-detail-value">${org.Volunteering}</div>
+                        </div>
+                    `;
+                }
+
+                let descriptionHTML = '';
+                if (org.Description) {
+                    descriptionHTML = `<div class="table-row-description">${org.Description}</div>`;
+                }
+
+                return `
+                    <div class="table-row-card">
+                        <div class="table-row-header">
+                            <div class="table-row-name">${org.Name || 'Unnamed'}</div>
+                            <span class="table-row-type-badge ${typeBadgeClass}">${type}</span>
+                        </div>
+                        <div class="table-row-details">
+                            ${detailsHTML}
+                        </div>
+                        ${descriptionHTML}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Event listeners for table view
+        // Function to switch to table view
+        function switchToTableView() {
+            document.getElementById('table-view-container').classList.add('active');
+            document.getElementById('map').style.display = 'none';
+            document.getElementById('pattern-canvas').style.display = 'none';
+            document.getElementById('city-search-container').style.display = 'none';
+            document.getElementById('zoom-controls').style.display = 'none';
+            document.getElementById('legend').style.display = 'none';
+            document.getElementById('info-banner').style.display = 'none';
+            document.getElementById('view-toggle').style.display = 'none';
+
+            // Load organisations if not already loaded
+            if (allOrganisations.length === 0) {
+                // Show loading state
+                document.getElementById('table-content').innerHTML = `
+                    <div class="table-empty-state">
+                        <div class="table-empty-state-icon">⏳</div>
+                        <div class="table-empty-state-text">Loading organisations...</div>
+                    </div>
+                `;
+                setTimeout(loadAllOrganisations, 100);
+            }
+        }
+
+        document.getElementById('view-toggle').addEventListener('click', switchToTableView);
+        document.getElementById('table-view-back-btn').addEventListener('click', function() {
+            document.getElementById('table-view-container').classList.remove('active');
+            document.getElementById('map').style.display = 'block';
+            document.getElementById('pattern-canvas').style.display = 'block';
+            document.getElementById('city-search-container').style.display = 'block';
+            document.getElementById('zoom-controls').style.display = 'flex';
+            document.getElementById('legend').style.display = 'block';
+            document.getElementById('info-banner').style.display = 'block';
+            document.getElementById('view-toggle').style.display = 'block';
+            // Trigger map resize to ensure it renders properly
+            setTimeout(() => map.resize(), 100);
+        });
+
+        // Close button also returns to map view
+        document.getElementById('table-view-close').addEventListener('click', function () {
+            document.getElementById('table-view-back-btn').click();
+        });
+
+        document.getElementById('table-search').addEventListener('input', filterOrganisations);
+        document.getElementById('filter-type').addEventListener('change', filterOrganisations);
+        document.getElementById('filter-city').addEventListener('change', filterOrganisations);
+
+        // Suggest a place button
+        document.getElementById('suggest-place-btn').addEventListener('click', function() {
+            window.open('https://tally.so/r/pbW4NZ', '_blank');
+        });
+    </script>
+</body>
+</html>
+
