@@ -1182,6 +1182,22 @@
 
         map.on('load', function () {
             mapStyleReady = true;
+
+            // Defensive cleanup: the custom Studio style (ginkoeco/cmn1qjpov00b901r0c24a6ibv)
+            // was originally built around the old Mapbox tileset workflow, and may still
+            // contain its own circle layer rendering that data with default (black,
+            // unstyled) dots. Since we now render all organisation points ourselves via
+            // JS (the clustering layers added below), hide any such leftover circle
+            // layers here so they can't show through behind/around our clusters.
+            // At this point in load, none of our own layers exist yet, so anything
+            // circle-typed found here is necessarily a pre-existing style layer.
+            map.getStyle().layers.forEach(function (layer) {
+                if (layer.type === 'circle') {
+                    console.warn('Hiding leftover circle layer baked into the Mapbox style:', layer.id, '- if this is unexpected, remove/hide it directly in Mapbox Studio instead.');
+                    map.setLayoutProperty(layer.id, 'visibility', 'none');
+                }
+            });
+
             tryInitializeApp();
         });
 
