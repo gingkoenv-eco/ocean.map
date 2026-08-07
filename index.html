@@ -1412,51 +1412,13 @@
                 data: GEOJSON_DATA,
                 cluster: true,
                 clusterMaxZoom: 13,
-                clusterRadius: 50
+                clusterRadius: 80
             });
 
-            // Cluster circles, sized/colored by how many points they contain
-            map.addLayer({
-                id: 'clusters',
-                type: 'circle',
-                source: 'organisations-source',
-                filter: ['has', 'point_count'],
-                paint: {
-                    'circle-color': [
-                        'step', ['get', 'point_count'],
-                        '#4a8fc7', 5,
-                        '#1f4e79', 10,
-                        '#163a5f'
-                    ],
-                    'circle-radius': [
-                        'step', ['get', 'point_count'],
-                        16, 5,
-                        20, 10,
-                        26
-                    ],
-                    'circle-opacity': 0.9,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#ffffff'
-                }
-            });
-
-            // Cluster count labels
-            map.addLayer({
-                id: 'cluster-count',
-                type: 'symbol',
-                source: 'organisations-source',
-                filter: ['has', 'point_count'],
-                layout: {
-                    'text-field': ['get', 'point_count_abbreviated'],
-                    'text-size': 13,
-                    'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold']
-                },
-                paint: {
-                    'text-color': '#ffffff'
-                }
-            });
-
-            // Individual (unclustered) points, colored by Organisation Type / Type
+            // Individual (unclustered) points, colored by Organisation Type / Type.
+            // Added FIRST so the cluster layer (added below) renders on top of it -
+            // this guarantees a cluster bubble always fully covers any points it
+            // represents, with nothing visible "poking out" from behind it.
             map.addLayer({
                 id: 'unclustered-point',
                 type: 'circle',
@@ -1497,6 +1459,49 @@
                     'circle-stroke-color': '#ffffff',
                     'circle-pitch-alignment': 'map',
                     'circle-pitch-scale': 'map'
+                }
+            });
+
+            // Cluster circles, sized/colored by how many points they contain.
+            // Fully opaque (circle-opacity: 1) and added after unclustered-point
+            // so a cluster bubble always completely covers the points within it.
+            map.addLayer({
+                id: 'clusters',
+                type: 'circle',
+                source: 'organisations-source',
+                filter: ['has', 'point_count'],
+                paint: {
+                    'circle-color': [
+                        'step', ['get', 'point_count'],
+                        '#4a8fc7', 5,
+                        '#1f4e79', 10,
+                        '#163a5f'
+                    ],
+                    'circle-radius': [
+                        'step', ['get', 'point_count'],
+                        16, 5,
+                        20, 10,
+                        26
+                    ],
+                    'circle-opacity': 1,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
+                }
+            });
+
+            // Cluster count labels (added last so they sit on top of the cluster circles)
+            map.addLayer({
+                id: 'cluster-count',
+                type: 'symbol',
+                source: 'organisations-source',
+                filter: ['has', 'point_count'],
+                layout: {
+                    'text-field': ['get', 'point_count_abbreviated'],
+                    'text-size': 13,
+                    'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold']
+                },
+                paint: {
+                    'text-color': '#ffffff'
                 }
             });
 
