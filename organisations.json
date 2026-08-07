@@ -1,0 +1,425 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.0873624,
+          55.8723
+        ]
+      },
+      "properties": {
+        "Name": "Berwickshire Marine Reserve",
+        "Type": "conservation",
+        "Description": "Berwickshire Marine Reserve is a community-led marine protected area on the southeast coast of Scotland that promotes the conservation, sustainable use, and public enjoyment of its rich coastal and marine environment. It works with local communities, researchers, divers, and visitors to protect biodiversity, support education, and encourage responsible access to the marine ecosystem.",
+        "Website": "https://www.berwickshiremarinereserve.org.uk/",
+        "Email": "info@berwickshiremarinereserve.org.uk",
+        "Phone": "4401890752509",
+        "City": "Eyemouth",
+        "Volunteering": "yes",
+        "Volunteering_details": "Offers volunteer opportunities in marine conservation, community engagement, citizen science, coastal surveys, and environmental education."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.1289786,
+          55.89824
+        ]
+      },
+      "properties": {
+        "Name": "St Abbs Marine Station",
+        "Type": "research, conservation",
+        "Description": "St Abbs Marine Station is an independent marine research facility that supports world-class scientific research, education, and innovation in marine biology and coastal ecology. Based in St Abbs, it provides laboratory facilities, field support, and access to diverse marine habitats for researchers, students, and collaborative projects.",
+        "Website": "https://marinestation.co.uk/",
+        "Email": "hello@marinestation.co.uk",
+        "Phone": "4401890771688",
+        "City": "St Abbs",
+        "Volunteering": "yes",
+        "Volunteering_details": "Offers volunteer opportunities supporting marine research, education, public outreach, fieldwork, and conservation projects, depending on current programmes and operational needs."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.1148797,
+          55.5825
+        ]
+      },
+      "properties": {
+        "Name": "Community of Arran Seabed Trust",
+        "Type": "conservation",
+        "Description": "COAST is a community-led marine conservation charity that works to protect and restore the seas around the Isle of Arran through scientific research, education, and community engagement. It is best known for leading the campaign that established Scotland's first No Take Zone in Lamlash Bay and continues to advocate for effective marine protection and sustainable management.",
+        "Website": "https://www.arrancoast.com/",
+        "Email": "email@arrancoast.com",
+        "Phone": "4401770600656",
+        "City": "Lamlash",
+        "Volunteering": "yes",
+        "Volunteering_details": "You can get involved on many levels, whether you want to come along to  weekly beach cleans in Arran, work in the COAST office or Discovery Centre for a month or two, or do some desk research and campaigning from home. You do not have to live on the island to get involved!"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.439522615,
+          55.85779982
+        ]
+      },
+      "properties": {
+        "Name": "Action West Loch",
+        "Type": "conservation",
+        "Description": "A community-based group dedicated to promoting awareness and a sense of connection to the land and water belonging to West Loch Tarbert – a sea loch feeding into the Sound of Gigha on the west coast of Scotland between Knapdale and the Kintyre peninsula.",
+        "Website": "https://www.actionwestloch.co.uk/",
+        "Email": "contact@actionwestloch.scot",
+        "Phone": "",
+        "City": "",
+        "Volunteering": "not sure",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.859786193,
+          56.77441167
+        ]
+      },
+      "properties": {
+        "Name": "Carna Coast and Communities",
+        "Type": "education, Marine wildlife, conservation",
+        "Description": "We are a Scottish Charitable Incorporated Organisation (SCIO), founded in 2025 to protect and regenerate the rich biodiversity of the Isle of Carna and the surrounding land, coasts, and waters of Loch Sunart, Loch Teacuis, and Loch Drom Bhuidhe.\nBy linking marine and terrestrial conservation, we encourage people to see the landscape as a whole and bring together diverse conservation groups working for a more sustainable future.",
+        "Website": "https://www.carnacoastandcommunities.org/contact",
+        "Email": "",
+        "Phone": "",
+        "City": "isle of Carna",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.501434016,
+          56.03687356
+        ]
+      },
+      "properties": {
+        "Name": "Charlestown, Limekilns and Pattiesmuir (CLP) Nature Action",
+        "Type": "education, campaigning",
+        "Description": "CLP Nature Action was founded in 2018. Across the West Fife villages of Charlestown, Limekilns, Pattiesmuir, through positive effective collaboration, we seek to deliver nature conservation and restoration projects, offer inclusive volunteer and engagement opportunities for our community to take action for nature and work to make our villages more sustainable for the long term.",
+        "Website": "https://www.facebook.com/clpnatureaction/",
+        "Email": "clpnaturegroup@gmail.com",
+        "Phone": "",
+        "City": "Limekilns",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.375798816,
+          58.30233899
+        ]
+      },
+      "properties": {
+        "Name": "Clean Coast Outer Hebrides",
+        "Type": "conservation, cleanups, campaigning, education",
+        "Description": "Clean Coast Outer Hebrides (CCOH) was set up in 2018 by a group of people concerned about the growing issue of plastic waste, and it’s effect on the coasts of the Outer Hebrides. CCOH are actively supporting, organising, leading, and participating in beach cleaning around the Outer Hebrides.",
+        "Website": "https://www.cleancoastoh.com/",
+        "Email": "hello@cleancoastoh.com",
+        "Phone": "",
+        "City": "Outer herbridies",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.201707189,
+          57.27828497
+        ]
+      },
+      "properties": {
+        "Name": "CLIMAVORE",
+        "Type": "education, research, conservation",
+        "Description": "CLIMAVORE is a Community Interest Company based in the Isle of Skye and Raasay that collaborates with local residents, schools, restaurants, and international researchers and activists, to share new approaches to regenerative sea-farming and food waste. This work has been acknowledged by multiple awards, including nominations for the 2021 Turner Prize, the Visible Award, and the Special Award at the Future Generation Art Prize.\n\nOur mission is to create ways of living on and with the coast as humans change the climate. We aim to empower coastal communities, who are custodians of their land, culture and futures, to review local food and food waste systems and drive a just transition in the wake of the climate and biodiversity crises.",
+        "Website": "https://www.climavore.org/",
+        "Email": "",
+        "Phone": "",
+        "City": "Isle of Skye and Raasay",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.902664684,
+          58.37160353
+        ]
+      },
+      "properties": {
+        "Name": "Common Ground North",
+        "Type": "campaigning, education",
+        "Description": "Common Ground is a newly formed, community-led organisation fostering self-determination along the North West Sutherland coast. We create opportunities for people to connect — to each other, to the land, and to our shared stories — through projects ranging from our Ruins to Seeds series, exploring how history shapes present-day choices, to the development of a mobile sauna as a space for rest and reconnection. Our aim is to nurture belonging, strengthen community voice, and explore new, inclusive ways of living well in a rural setting. Looking ahead, we hope to grow projects that are accessible, sustainable, and deeply rooted in the land and waters that sustain us.",
+        "Website": "",
+        "Email": "",
+        "Phone": "",
+        "City": "North West Sutherland coast",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.0704726,
+          56.64266051
+        ]
+      },
+      "properties": {
+        "Name": "Community Association of Lochs and Sounds (CAOLAS)",
+        "Type": "education, conservation, campaigning",
+        "Description": "CAOLAS (also Gaelic for ‘narrow neck of water’) stands for the Loch Sunart and Sound of Mull ‘Community Association of Lochs and Sounds’.  CAOLAS came together in 2015 following the designation of Loch Sunart and the Sound of Mull as Marine Protected Areas. It aims to raise awareness of the unique marine environment and to encourage community involvement in its protection, preservation and sustainability. In 2017 CAOLAS was formally constituted as a Scottish Charitable Incorporated Organisation (SCIO).\n\nSince then, CAOLAS have been developing a programme of education and activities – with local and national expertise – that shows people what wonderful marine life there is in Loch Sunart and the Sound of Mull. CAOLAS also run the Lochaline Native Oyster Project, which aims to restore native oysters to Lochaline. Up to 20,000 native oysters will be grown in suspended cages beneath floating pontoons until sufficiently mature and then released onto the Lochaline seabed in areas where they were formerly found.",
+        "Website": "https://caolas.org/",
+        "Email": "admin@caolas.org",
+        "Phone": "",
+        "City": "Morvern, Ardnamurchan, Sunart, Mull",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.34313261,
+          55.94437484
+        ]
+      },
+      "properties": {
+        "Name": "Cove & Kilcreggan Clearwater Group",
+        "Type": "research, cleanups, conservation",
+        "Description": "The Clearwater Group are based in the villages of Cove and Kilcreggan on the  Rosneath Peninsula. They are a group of like minded people who aspire to preserve their coastline that is under threat from detrimental sewage and damaging fishing practices. Find out more about Cove & Kilcreggan Clearwater Group on their website!",
+        "Website": "https://www.coveandkilcreggancommunity.com/community-groups/clearwater-group",
+        "Email": "clearwater@coveandkilcreggancommunity.com",
+        "Phone": "",
+        "City": "Cove and Kilcreggan",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.56907007,
+          56.14602669
+        ]
+      },
+      "properties": {
+        "Name": "Craignish Restoration of Marine and Coastal Habitat (CROMACH)",
+        "Type": "conservation, Marine wildlife, campaigning",
+        "Description": "Craignish Restoration of Marine and Coastal Habitats (CROMACH) is a community group based in Loch Craignish on the west coast of Scotland. It was established to give local people a voice in local marine management. It aims to encourage and promote sustainable use of local waters for recreation, fishing and other marine activities whilst allowing recovery of biodiversity and natural processes in Loch Craignish, the Sound of Jura and the Firth of Lorn. CROMACH also raises awareness within the community on marine issues and seeks to carry out research, surveys and investigations of the local marine environment.\n\nIn 2019, CROMACH came together with other Argyll communities to sucessfully achieve the first Mission Blue Hope Spot in Scotland, and mainland UK, the Argyll Coast and Islands Hope Spot.\n\nIn 2020, CROMACH and other organisations set up the Seawilding project, which aims to advance the environmental protection and improvement of Scottish coastal waters by developing and delivering projects to restore degraded marine habitats and species, including native oysters and other priority marine features around coastal shorelines.",
+        "Website": "https://www.cromach.org/",
+        "Email": "info@cromach.org",
+        "Phone": "",
+        "City": "Loch Craignish",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.928531816,
+          55.94995608
+        ]
+      },
+      "properties": {
+        "Name": "Dunoon Community Development Trust",
+        "Type": "education, climate",
+        "Description": "Dunoon Community Development Trust (DCDT) has been established to support sustainable development. As a coastal community this includes the protection of the marine environment and coastal biodiversity. Over the past few years, we have been developing a greater understanding of how to protect our local marine environment and have supported beach cleans and research around the management of the shingle beach in the town centre at West Bay.\n\nDCDT was established with the support of SURF, Scotland’s Regeneration Forum and works in partnership with Argyll and Bute Council to support and inform the regeneration of the town in alignment with the goal of sustainable development",
+        "Website": "https://www.dunooncdt.org/",
+        "Email": "ann@dunooncdt.org",
+        "Phone": "",
+        "City": "Dunoon",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.665197031,
+          56.5242627
+        ]
+      },
+      "properties": {
+        "Name": "East Haven Together",
+        "Type": "campaigning, cleanups",
+        "Description": "East Haven is one of the earliest recorded fishing communities in Scotland, dating back to 1214. The octocentenary of the village was celebrated with a wide range of gardening and heritage projects in 2014 and a new charity, called East Haven Together, was subsequently launched in 2015.  A sustainability strategy linked to the United Nations Global Development Goals underpins the charitable aims of East Haven Together.\n\nEast Haven Together works on a number of different levels to protect the marine environment. The charity works collaboratively with other groups, businesses and schools along the Angus coast.  Since 2015, EHT has raised a number of issues at UK and Scottish Government level in an attempt to influence policy and legislative change. For example, we have worked to reduce the amount of ghost fishing gear lost through sabotage and have met with fishing industry leaders. More recently we have shone a light on the weakness of MARPOL regulations which allow military ships to dump waste unnecessarily in peace time. We are involved in everything from littering to pollution, disposal of marine waste and chemical contamination.",
+        "Website": "https://www.easthavenangus.com/",
+        "Email": "easthaventogether@gmail.com",
+        "Phone": "",
+        "City": "East Haven",
+        "Volunteering": "yes",
+        "Volunteering_details": "Volunteering\nOpportunities\nNamed Drivers for ATV\n\nMeetings - Consultation\n\nCaring for our Public Toilets\n\nGardens - Wildlife- Nature\n\nCoastal Resilience\n\nRoads - Drains - Paths\n\nBaking - Sewing - Leaflets\n\nIT - web-site management"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.170920557,
+          55.97867297
+        ]
+      },
+      "properties": {
+        "Name": "Edinburgh Shoreline",
+        "Type": "conservation, cleanups, campaigning, research",
+        "Description": "The Edinburgh Shoreline project was officially launched in February 2018 with Heritage Lottery Fund and NatureScot (then SNH) funding and overarching management by Royal Botanic Gardens Edinburgh (RBGE). The aim of the project was to help improve access to and raise awareness of the cultural and environmental heritage of the city’s 27k shoreline, many stretches of which had been neglected for a long time.\n\nProject staff surveyed species, ran workshops, worked with schools, documented memories, filmed the whole Edinburgh shoreline by drone, produced an awareness raising film and held exhibitions in the main exhibition hall at RBGE.  This part of the project is complete and the group are now involved with the Restoration Forth project, which seeks to create thriving seagrass meadows and native oyster populations in the Firth of Forth.",
+        "Website": "https://edinburghshoreline.org.uk/get-involved/",
+        "Email": "karen@edinburghshoreline.org.uk",
+        "Phone": "",
+        "City": "Edinburgh",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.62923746,
+          59.52722767
+        ]
+      },
+      "properties": {
+        "Name": "Fair Isle Marine Research Organisation (FIMRO)",
+        "Type": "conservation",
+        "Description": "Fair Isle has a wide range of maritime attributes and issues which are important and deserve urgent measures for these assets to be safeguarded. The Fair Isle Marine Environment and Tourism Initiative (FIMETI) was set up in 1995 by the people of Fair Isle to help achieve this.\n\nIn November 2017 Fair Isle’s seas were designated as the first Demonstration & Research Marine Protected Area (DR MPA) in Scotland. This community-developed site is now set up to research the ecological features and impacts on local seabird populations and the wider marine environment whilst also studying the socio-economic value of a healthy marine environment and partnership-led management. In 2018, the Fair Isle Marine Research Organisation (FIMRO) was established, formally replacing the FIMETI.",
+        "Website": "https://www.fimeti.org.uk/aboutfairisle.asp",
+        "Email": "",
+        "Phone": "",
+        "City": "Fair Isle",
+        "Volunteering": "no",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.067148266,
+          55.94593822
+        ]
+      },
+      "properties": {
+        "Name": "Fisherrow Harbour & Seafront Association",
+        "Type": "conservation, campaigning",
+        "Description": "Established in 2019 to give local organisations a stronger voice, the Fisherrow Harbour & Seafront Association is a small community-based charity run by trustees, who are the main volunteers, and supported by our members. We all care about the sea, coastline and infrastructure around our local area, and strive to protect and celebrate it.",
+        "Website": "https://www.fhsa.org.uk/",
+        "Email": "secretary@fhsa.org.uk",
+        "Phone": "",
+        "City": "Musselburgh",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.578914539,
+          57.137893409818794
+        ]
+      },
+      "properties": {
+        "Name": "Friends of Loch Hourn",
+        "Type": "conservation",
+        "Description": "Established in 2020, Friends of Loch Hourn has over 100 members including residents, landowners, fishermen and others with a strong connection to the affairs affecting the marine ecology of Loch Hourn.  The purpose of The Friends of Loch Hourn is the advancement of environmental protection and ecological sustainability with particular reference to Loch Hourn and the surrounding area.",
+        "Website": "https://www.friendsoflochhourn.org.uk/join-us/",
+        "Email": "",
+        "Phone": "",
+        "City": "Loch Hourn",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.636589252,
+          56.01577077965175
+        ]
+      },
+      "properties": {
+        "Name": "Friends of the Sound of Jura",
+        "Type": "education",
+        "Description": "Friends of the Sound of Jura is a community group and registered Scottish charity based in Knapdale, mid-Argyll, an area bounded on three sides by the sea. It seeks to protect the Sound, the River Add and their local users from threats to the area’s wildlife and local economy.\n\nFriends of the Sound of Jura coalesced to object to a fish farm proposal being suddenly imposed in an inappropriate place where it would harm marine life and the community. We soon realised how rare it is for the opinions of coastal people to be heard or given due weight in the planning process. As a result, the group now intends to inform and help their local community to express its opinions and to campaign more widely for marine conservation and the sustainable use of the sea we all share.",
+        "Website": "https://friendsofthesoundofjura.org.uk/",
+        "Email": "",
+        "Phone": "",
+        "City": "Knapdale, mid-Argyll",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.576353707,
+          55.6020621
+        ]
+      },
+      "properties": {
+        "Name": "Kintyre Coastal Network",
+        "Type": "conservation, cleanups, research",
+        "Description": "Kintyre Coastal Network is a newly formed marine conservation group based in Kintyre. They aim to locate and survey existing seagrass beds with a view to establish a programme of protection and regeneration.",
+        "Website": "https://www.kintyrecoastalnetwork.org/volunteering",
+        "Email": "kintyrecoastalnetwork@gmail.com",
+        "Phone": "",
+        "City": "Kintyre",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    }
+  ]
+}
