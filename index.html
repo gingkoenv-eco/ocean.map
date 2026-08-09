@@ -140,150 +140,6 @@
             transform: translateX(0);
         }
 
-        @media (max-width: 480px) {
-            #side-panel {
-                left: 0;
-                right: 0;
-                top: auto;
-                bottom: 0;
-                width: 100%;
-                height: auto;
-                max-height: 78vh;
-                border-radius: 16px 16px 0 0;
-                transform: translateY(100%);
-                padding: 16px;
-                padding-bottom: max(16px, env(safe-area-inset-bottom));
-            }
-
-            #side-panel.open {
-                transform: translateY(0);
-            }
-
-            /* Collapsible search bar: icon-only by default, expands on tap */
-            #city-search-container {
-                top: 12px;
-                right: 12px;
-                width: 44px;
-                transition: width 0.25s ease-in-out;
-            }
-
-            #city-search-container.expanded {
-                width: calc(100vw - 24px);
-            }
-
-            #city-search-bar {
-                padding: 5px;
-            }
-
-            #city-search {
-                width: 0;
-                padding: 0;
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out;
-            }
-
-            #city-search-container.expanded #city-search {
-                width: auto;
-                flex: 1;
-                padding: 10px 4px;
-                opacity: 1;
-            }
-
-            /* Simplified info banner: no card/background, just a small button */
-            .info-banner {
-                top: 12px;
-                left: 12px;
-                background-color: transparent;
-                box-shadow: none;
-                padding: 0;
-            }
-
-            .info-banner strong,
-            .info-banner small,
-            .info-banner br {
-                display: none;
-            }
-
-            .info-banner button {
-                margin-top: 0;
-                padding: 8px 12px;
-                font-size: 11px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            }
-
-            /* Legend collapses behind a toggle chip */
-            #legend {
-                bottom: 12px;
-                right: 12px;
-                padding: 0;
-                max-height: 36px;
-                overflow: hidden;
-                transition: max-height 0.25s ease-in-out, padding 0.25s ease-in-out;
-                width: 130px;
-            }
-
-            #legend.expanded {
-                max-height: 300px;
-                padding: 12px;
-            }
-
-            .legend-title {
-                cursor: pointer;
-                padding: 9px 12px;
-                margin-bottom: 0;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            #legend.expanded .legend-title {
-                padding: 0;
-                margin-bottom: 10px;
-            }
-
-            .legend-items-wrap {
-                display: none;
-            }
-
-            #legend.expanded .legend-items-wrap {
-                display: block;
-            }
-
-            #legend-chevron {
-                display: inline;
-                transition: transform 0.2s ease-in-out;
-            }
-
-            #legend.expanded #legend-chevron {
-                transform: rotate(180deg);
-            }
-
-            /* Zoom controls tucked closer since legend shrinks */
-            #zoom-controls {
-                right: 12px;
-                bottom: 60px;
-            }
-
-            /* Filter controls collapse behind a toggle on mobile */
-            .filter-toggle-btn {
-                display: inline-block;
-            }
-
-            .filter-controls {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                margin-top: 10px;
-            }
-
-            .filter-controls.open {
-                display: flex;
-            }
-
-            .filter-select {
-                width: 100%;
-            }
-        }
 
         #side-panel-close {
             position: absolute;
@@ -969,6 +825,167 @@
             color: #374151;
             font-weight: 600;
         }
+
+        @media (max-width: 480px) {
+            #side-panel {
+                left: 0;
+                right: 0;
+                top: auto;
+                bottom: 0;
+                width: 100%;
+                height: auto;
+                max-height: 78vh;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+                padding: 16px;
+                padding-bottom: max(16px, env(safe-area-inset-bottom));
+            }
+
+            #side-panel.open {
+                transform: translateY(0);
+            }
+
+            /* Collapsible search bar: icon-only by default, expands on tap */
+            #city-search-container {
+                top: 12px;
+                right: 12px;
+                width: 44px;
+                transition: width 0.25s ease-in-out;
+            }
+
+            #city-search-container.expanded {
+                width: calc(100vw - 24px);
+            }
+
+            #city-search-bar {
+                padding: 5px;
+            }
+
+            #city-search {
+                width: 0;
+                flex: none;
+                padding: 0;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            #city-search-container.expanded #city-search {
+                width: auto;
+                flex: 1;
+                padding: 10px 4px;
+                opacity: 1;
+            }
+
+            /* Simplified info banner: no card/background, just a small button */
+            .info-banner {
+                top: 12px;
+                left: 12px;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .info-banner strong,
+            .info-banner small,
+            .info-banner br {
+                display: none;
+            }
+
+            .info-banner button {
+                margin-top: 0;
+                padding: 8px 12px;
+                font-size: 11px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            /* Legend collapses behind a toggle chip */
+            #legend {
+                bottom: 12px;
+                right: 12px;
+                padding: 0;
+                max-height: 36px;
+                overflow: hidden;
+                transition: max-height 0.25s ease-in-out, padding 0.25s ease-in-out;
+                width: 130px;
+            }
+
+            #legend.expanded {
+                max-height: 300px;
+                padding: 12px;
+            }
+
+            .legend-title {
+                cursor: pointer;
+                padding: 9px 12px;
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            #legend.expanded .legend-title {
+                padding: 0;
+                margin-bottom: 10px;
+            }
+
+            .legend-items-wrap {
+                display: none;
+            }
+
+            #legend.expanded .legend-items-wrap {
+                display: block;
+            }
+
+            #legend-chevron {
+                display: inline;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            #legend.expanded #legend-chevron {
+                transform: rotate(180deg);
+            }
+
+            /* Zoom controls tucked closer since legend shrinks */
+            #zoom-controls {
+                right: 12px;
+                bottom: 60px;
+            }
+
+            /* Filter controls collapse behind a toggle on mobile */
+            .filter-toggle-btn {
+                display: inline-block;
+            }
+
+            .filter-controls {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .filter-controls.open {
+                display: flex;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
+            /* Cap description length on mobile so tiles stay compact - long
+               descriptions truncate with an ellipsis instead of stretching the row */
+            .table-row-description {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-height: 2.9em;
+            }
+
+            .table-row-card {
+                max-height: 220px;
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1536,10 +1553,18 @@
                 layout: {
                     'text-field': ['get', 'point_count_abbreviated'],
                     'text-size': 13,
-                    'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold']
+                    // No custom text-font here deliberately: the custom Studio style
+                    // may not host the "Open Sans Bold" glyph range, and requesting a
+                    // font it doesn't have can cause corrupted/partial glyph
+                    // rendering on some mobile GPUs. Falling back to the style's own
+                    // default font (already used successfully by place-name labels)
+                    // avoids that risk entirely.
+                    'text-allow-overlap': true,
+                    'text-ignore-placement': true
                 },
                 paint: {
-                    'text-color': '#ffffff'
+                    'text-color': '#ffffff',
+                    'text-halo-width': 0
                 }
             });
 
@@ -2090,4 +2115,3 @@
     </script>
 </body>
 </html>
-
