@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Scotland Ocean Conservation Organisations</title>
     
     <!-- Mapbox GL JS CSS -->
@@ -26,6 +28,7 @@
             bottom: 0;
             width: 100%;
             z-index: 1;
+            touch-action: none;
         }
 
         #pattern-canvas {
@@ -686,9 +689,9 @@
 
         /* Table Header with Controls */
         #table-header {
-            background-color: #f8f9fa;
-            border-bottom: 2px solid #ddd;
-            padding: 20px;
+            background-color: #fafbfc;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 14px 20px;
             flex-shrink: 0;
         }
 
@@ -696,51 +699,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .table-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1f4e79;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1f2937;
+            letter-spacing: -0.01em;
         }
 
         .table-controls-close {
             background: none;
             border: none;
-            font-size: 28px;
+            font-size: 22px;
             cursor: pointer;
-            color: #333;
+            color: #6b7280;
             padding: 0;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 6px;
         }
 
         .table-controls-close:hover {
             background-color: #f0f0f0;
-            border-radius: 4px;
+            color: #1f2937;
         }
 
         .table-search-filter-bar {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .filter-toggle-btn {
             display: none;
-            padding: 10px 14px;
-            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
             border-radius: 6px;
             background-color: white;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             font-family: inherit;
             white-space: nowrap;
+            color: #374151;
         }
 
         .filter-toggle-btn:hover {
@@ -750,18 +756,19 @@
 
         .filter-controls {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .table-search-box {
             flex: 1;
             min-width: 200px;
-            padding: 10px 14px;
-            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             font-family: inherit;
+            color: #1f2937;
         }
 
         .table-search-box:focus {
@@ -771,13 +778,14 @@
         }
 
         .filter-select {
-            padding: 10px 12px;
-            border: 1px solid #ddd;
+            padding: 8px 10px;
+            border: 1px solid #d1d5db;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             background-color: white;
             cursor: pointer;
             font-family: inherit;
+            color: #1f2937;
         }
 
         .filter-select:focus {
@@ -787,56 +795,64 @@
         }
 
         .table-results-info {
-            font-size: 12px;
-            color: #666;
-            padding-top: 10px;
+            font-size: 11px;
+            color: #9ca3af;
+            padding-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
         }
 
         /* Table Content */
         #table-content {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: 4px 20px 20px;
         }
 
         .table-row-card {
             background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-            transition: all 0.2s;
+            border: none;
+            border-bottom: 1px solid #eef0f2;
+            border-radius: 0;
+            padding: 11px 6px;
+            margin-bottom: 0;
+            transition: background-color 0.12s;
             cursor: pointer;
         }
 
         .table-row-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-color: #1f4e79;
+            background-color: #f8fafc;
+            box-shadow: none;
+            border-color: #eef0f2;
         }
 
         .table-row-header {
             display: flex;
             justify-content: space-between;
-            align-items: start;
-            margin-bottom: 12px;
+            align-items: center;
+            margin-bottom: 6px;
+            gap: 10px;
         }
 
         .table-row-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1f4e79;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #1f2937;
             flex: 1;
+            line-height: 1.3;
         }
 
         .table-row-type-badge {
             display: inline-block;
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 12px;
+            padding: 2px 9px;
+            border-radius: 12px;
+            font-size: 10.5px;
             font-weight: 600;
             text-transform: capitalize;
             white-space: nowrap;
-            margin-left: 10px;
+            margin-left: 8px;
+            flex-shrink: 0;
         }
 
         .table-row-type-conservation {
@@ -889,9 +905,9 @@
 
         .table-row-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            font-size: 13px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 6px 16px;
+            font-size: 12px;
         }
 
         .table-row-detail-item {
@@ -901,17 +917,18 @@
 
         .table-row-detail-label {
             font-weight: 600;
-            color: #666;
-            margin-bottom: 4px;
+            color: #9ca3af;
+            margin-bottom: 1px;
             text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.5px;
+            font-size: 9.5px;
+            letter-spacing: 0.05em;
         }
 
         .table-row-detail-value {
-            color: #333;
-            line-height: 1.4;
+            color: #374151;
+            line-height: 1.35;
             word-break: break-word;
+            font-size: 12.5px;
         }
 
         .table-row-detail-value a {
@@ -925,28 +942,32 @@
         }
 
         .table-row-description {
-            color: #555;
-            line-height: 1.5;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #f0f0f0;
-            font-style: italic;
+            color: #6b7280;
+            line-height: 1.45;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #f3f4f6;
+            font-style: normal;
+            font-size: 12.5px;
         }
 
         .table-empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #999;
+            color: #9ca3af;
         }
 
         .table-empty-state-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
+            font-size: 40px;
+            margin-bottom: 14px;
+            opacity: 0.6;
         }
 
         .table-empty-state-text {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #374151;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -1428,7 +1449,8 @@
                 data: GEOJSON_DATA,
                 cluster: true,
                 clusterMaxZoom: 13,
-                clusterRadius: 80
+                clusterRadius: 80,
+                clusterMinPoints: 6
             });
 
             // Individual (unclustered) points, colored by Organisation Type / Type.
@@ -1701,6 +1723,20 @@
         map.on('error', function (error) {
             console.error('Map error:', error);
         });
+
+        // Defensive resize: mobile browsers change the visible viewport height
+        // when their address bar shows/hides, and rotating the device changes
+        // both dimensions. Keeping the WebGL canvas's internal resolution in
+        // sync with its CSS box avoids stale/mismatched rendering.
+        let resizeTimer = null;
+        function scheduleMapResize() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                map.resize();
+            }, 150);
+        }
+        window.addEventListener('resize', scheduleMapResize);
+        window.addEventListener('orientationchange', scheduleMapResize);
 
         // ============================================================
         // TABLE VIEW FUNCTIONALITY
