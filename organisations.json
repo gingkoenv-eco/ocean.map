@@ -216,6 +216,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -6.136242371,
+          56.90543942
+        ]
+      },
+      "properties": {
+        "Name": "Eigg Environmental Action Group",
+        "Type": "conservation, campaigning, education, cleanups",
+        "Description": "The Eigg Environmental Action Group is a community group based on the Isle of Eigg. Their mission is to work together to protect and enhance the quality of their island through community empowerment and sustainable action. Core projects include monthly beach cleans and promoting awareness about marine pollution. The community also successfully opposed proposals for a fish farm.\n\nThe Isle of Eigg is the second largest of the small isles, within the Small Isles Nature Conservation Marine Protected Area (MPA) – home to the UK’s only known colony of rare fan mussels.  This is one of Scotland’s most diverse and valuable seabed habitats.",
+        "Website": "https://isleofeigg.org/2020/10/eigg-environmental-action/",
+        "Email": "",
+        "Phone": "",
+        "City": "Isle of Eigg",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -1.62923746,
           59.52722767
         ]
