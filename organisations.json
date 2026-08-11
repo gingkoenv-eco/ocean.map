@@ -69,111 +69,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -5.439522615,
-          55.85779982
-        ]
-      },
-      "properties": {
-        "Name": "Action West Loch",
-        "Type": "conservation",
-        "Description": "A community-based group dedicated to promoting awareness and a sense of connection to the land and water belonging to West Loch Tarbert – a sea loch feeding into the Sound of Gigha on the west coast of Scotland between Knapdale and the Kintyre peninsula.",
-        "Website": "https://www.actionwestloch.co.uk/",
-        "Email": "contact@actionwestloch.scot",
-        "Phone": "",
-        "City": "",
-        "Volunteering": "not sure",
-        "Volunteering_details": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -5.859786193,
-          56.77441167
-        ]
-      },
-      "properties": {
-        "Name": "Carna Coast and Communities",
-        "Type": "education, Marine wildlife, conservation",
-        "Description": "We are a Scottish Charitable Incorporated Organisation (SCIO), founded in 2025 to protect and regenerate the rich biodiversity of the Isle of Carna and the surrounding land, coasts, and waters of Loch Sunart, Loch Teacuis, and Loch Drom Bhuidhe.\nBy linking marine and terrestrial conservation, we encourage people to see the landscape as a whole and bring together diverse conservation groups working for a more sustainable future.",
-        "Website": "https://www.carnacoastandcommunities.org/contact",
-        "Email": "",
-        "Phone": "",
-        "City": "isle of Carna",
-        "Volunteering": "yes",
-        "Volunteering_details": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -3.501434016,
-          56.03687356
-        ]
-      },
-      "properties": {
-        "Name": "Charlestown, Limekilns and Pattiesmuir (CLP) Nature Action",
-        "Type": "education, campaigning",
-        "Description": "CLP Nature Action was founded in 2018. Across the West Fife villages of Charlestown, Limekilns, Pattiesmuir, through positive effective collaboration, we seek to deliver nature conservation and restoration projects, offer inclusive volunteer and engagement opportunities for our community to take action for nature and work to make our villages more sustainable for the long term.",
-        "Website": "https://www.facebook.com/clpnatureaction/",
-        "Email": "clpnaturegroup@gmail.com",
-        "Phone": "",
-        "City": "Limekilns",
-        "Volunteering": "yes",
-        "Volunteering_details": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -6.375798816,
-          58.30233899
-        ]
-      },
-      "properties": {
-        "Name": "Clean Coast Outer Hebrides",
-        "Type": "conservation, cleanups, campaigning, education",
-        "Description": "Clean Coast Outer Hebrides (CCOH) was set up in 2018 by a group of people concerned about the growing issue of plastic waste, and it’s effect on the coasts of the Outer Hebrides. CCOH are actively supporting, organising, leading, and participating in beach cleaning around the Outer Hebrides.",
-        "Website": "https://www.cleancoastoh.com/",
-        "Email": "hello@cleancoastoh.com",
-        "Phone": "",
-        "City": "Outer herbridies",
-        "Volunteering": "yes",
-        "Volunteering_details": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -6.201707189,
-          57.27828497
-        ]
-      },
-      "properties": {
-        "Name": "CLIMAVORE",
-        "Type": "education, research, conservation",
-        "Description": "CLIMAVORE is a Community Interest Company based in the Isle of Skye and Raasay that collaborates with local residents, schools, restaurants, and international researchers and activists, to share new approaches to regenerative sea-farming and food waste. This work has been acknowledged by multiple awards, including nominations for the 2021 Turner Prize, the Visible Award, and the Special Award at the Future Generation Art Prize.\n\nOur mission is to create ways of living on and with the coast as humans change the climate. We aim to empower coastal communities, who are custodians of their land, culture and futures, to review local food and food waste systems and drive a just transition in the wake of the climate and biodiversity crises.",
-        "Website": "https://www.climavore.org/",
-        "Email": "",
-        "Phone": "",
-        "City": "Isle of Skye and Raasay",
-        "Volunteering": "yes",
-        "Volunteering_details": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -4.902664684,
           58.37160353
         ]
@@ -292,7 +187,7 @@
         "Phone": "",
         "City": "East Haven",
         "Volunteering": "yes",
-        "Volunteering_details": "Volunteering\nOpportunities\nNamed Drivers for ATV\n\nMeetings - Consultation\n\nCaring for our Public Toilets\n\nGardens - Wildlife- Nature\n\nCoastal Resilience\n\nRoads - Drains - Paths\n\nBaking - Sewing - Leaflets\n\nIT - web-site management"
+        "Volunteering_details": "Volunteering\r\nOpportunities\r\nNamed Drivers for ATV\r\n\r\nMeetings - Consultation\r\n\r\nCaring for our Public Toilets\r\n\r\nGardens - Wildlife- Nature\r\n\r\nCoastal Resilience\r\n\r\nRoads - Drains - Paths\r\n\r\nBaking - Sewing - Leaflets\r\n\r\nIT - web-site management"
       }
     },
     {
