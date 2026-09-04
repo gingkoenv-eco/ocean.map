@@ -244,11 +244,59 @@
             color: #333;
         }
 
+        .legend-filter-hint {
+            font-weight: 400;
+            font-size: 10.5px;
+            color: #999;
+            text-transform: none;
+        }
+
+        .legend-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .legend-action-link {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 11px;
+            color: #1f4e79;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .legend-action-link:hover {
+            color: #163a5f;
+        }
+
         .legend-item {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
             font-size: 12px;
+            cursor: pointer;
+            user-select: none;
+            padding: 3px 4px;
+            border-radius: 4px;
+            transition: background-color 0.12s, opacity 0.12s;
+        }
+
+        .legend-item:hover {
+            background-color: #f5f7fa;
+        }
+
+        .legend-item.inactive {
+            opacity: 0.35;
+        }
+
+        .legend-item.inactive .legend-color {
+            filter: grayscale(70%);
         }
 
         .legend-color {
@@ -258,6 +306,7 @@
             margin-right: 10px;
             border: 2px solid #ffffff;
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
         }
 
         .legend-label {
@@ -674,7 +723,6 @@
             padding: 11px 6px;
             margin-bottom: 0;
             transition: background-color 0.12s;
-            cursor: pointer;
         }
 
         .table-row-card:hover {
@@ -697,6 +745,18 @@
             color: #1f2937;
             flex: 1;
             line-height: 1.3;
+        }
+
+        .table-row-name-clickable {
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .table-row-name-clickable:hover,
+        .table-row-name-clickable:focus-visible {
+            color: #1f4e79;
+            text-decoration: underline;
+            outline: none;
         }
 
         .table-row-type-badge {
@@ -910,8 +970,13 @@
             }
 
             #legend.expanded {
-                max-height: 300px;
+                max-height: 320px;
                 padding: 12px;
+                width: 190px;
+            }
+
+            .legend-filter-hint {
+                display: none;
             }
 
             .legend-title {
@@ -998,7 +1063,7 @@
     <!-- City / Organisation Search Bar -->
     <div id="city-search-container">
         <div id="city-search-bar">
-            <button id="search-logo" aria-label="Search"><span>🌊</span></button>
+            <button id="search-logo" aria-label="Search"><span>🔍</span></button>
             <input 
                 type="text" 
                 id="city-search" 
@@ -1030,39 +1095,43 @@
     <!-- Legend -->
     <div id="legend">
         <div class="legend-title" id="legend-toggle">
-            <span>Type</span>
+            <span>Type <span id="legend-filter-hint" class="legend-filter-hint">(tap to filter)</span></span>
             <span id="legend-chevron">▾</span>
         </div>
         <div class="legend-items-wrap">
-            <div class="legend-item">
+            <div class="legend-actions">
+                <button type="button" id="legend-select-all" class="legend-action-link">All</button>
+                <button type="button" id="legend-clear-all" class="legend-action-link">None</button>
+            </div>
+            <div class="legend-item" data-category="conservation" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #1f4e79;"></div>
                 <span class="legend-label">Conservation</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="marine-wildlife" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #14b8a6;"></div>
                 <span class="legend-label">Marine wildlife</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="cleanups" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #17a2b8;"></div>
                 <span class="legend-label">Cleanups</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="campaigning" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #9b59b6;"></div>
                 <span class="legend-label">Campaigning</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="education" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #e67e22;"></div>
                 <span class="legend-label">Education</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="climate" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #a0522d;"></div>
                 <span class="legend-label">Climate</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="research" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #2ecc71;"></div>
                 <span class="legend-label">Research</span>
             </div>
-            <div class="legend-item">
+            <div class="legend-item" data-category="others" role="checkbox" aria-checked="true" tabindex="0">
                 <div class="legend-color" style="background-color: #e74c3c;"></div>
                 <span class="legend-label">Others</span>
             </div>
@@ -1190,6 +1259,7 @@
         // file never needs to be touched again.
         // ============================================================
         let GEOJSON_DATA = null;
+        let openSidePanel = null; // assigned inside initializeApp() once the map is ready; the table view calls this too
         let EMBEDDED_ORGANISATIONS = [];
 
         // Set your Mapbox access token
@@ -1254,7 +1324,6 @@
                     });
                 });
                 orgDataReady = true;
-                document.getElementById('view-toggle').disabled = false;
                 tryInitializeApp();
             })
             .catch(function (err) {
@@ -1461,14 +1530,24 @@
             // supports clustering on GeoJSON sources, and (2) the map, table, and
             // search all read from the exact same embedded dataset, so they can
             // never disagree with each other.
-            map.addSource('organisations-source', {
+            //
+            // Clustering is disabled entirely on mobile: with a small screen and
+            // touch input, individual pins are easier to tap accurately, and
+            // clusters add an extra zoom-in step that's more friction on mobile
+            // than on desktop.
+            const isMobileDevice = window.innerWidth <= 480;
+
+            const sourceConfig = {
                 type: 'geojson',
-                data: GEOJSON_DATA,
-                cluster: true,
-                clusterMaxZoom: 13,
-                clusterRadius: 80,
-                clusterMinPoints: 6
-            });
+                data: GEOJSON_DATA
+            };
+            if (!isMobileDevice) {
+                sourceConfig.cluster = true;
+                sourceConfig.clusterMaxZoom = 13;
+                sourceConfig.clusterRadius = 80;
+                sourceConfig.clusterMinPoints = 6;
+            }
+            map.addSource('organisations-source', sourceConfig);
 
             // Individual (unclustered) points, colored by Organisation Type / Type.
             // Added FIRST so the cluster layer (added below) renders on top of it -
@@ -1632,7 +1711,7 @@
             // ============================================================
 
             // Function to open side panel with organisation details
-            function openSidePanel(properties) {
+            openSidePanel = function (properties) {
                 let panelHTML = '';
 
                 // Add organisation type badge first (above title)
@@ -1736,7 +1815,74 @@
                 // Update panel content and open it
                 document.getElementById('panel-content').innerHTML = panelHTML;
                 document.getElementById('side-panel').classList.add('open');
+            };
+
+            // ============================================================
+            // MAP CATEGORY FILTER (legend doubles as a multi-select filter)
+            // ============================================================
+
+            const ALL_MAP_CATEGORIES = ['conservation', 'marine-wildlife', 'cleanups', 'campaigning', 'education', 'climate', 'research', 'others'];
+            let activeMapCategories = new Set(ALL_MAP_CATEGORIES);
+
+            function applyMapCategoryFilter() {
+                const filtered = GEOJSON_DATA.features.filter(function (feature) {
+                    const category = getPrimaryCategory(getTypeValue(feature.properties));
+                    return activeMapCategories.has(category);
+                });
+                map.getSource('organisations-source').setData({
+                    type: 'FeatureCollection',
+                    features: filtered
+                });
             }
+
+            function setLegendItemState(item, active) {
+                item.classList.toggle('inactive', !active);
+                item.setAttribute('aria-checked', active ? 'true' : 'false');
+            }
+
+            const legendItems = document.querySelectorAll('.legend-item[data-category]');
+
+            function toggleLegendCategory(item) {
+                const category = item.getAttribute('data-category');
+                if (activeMapCategories.has(category)) {
+                    activeMapCategories.delete(category);
+                    setLegendItemState(item, false);
+                } else {
+                    activeMapCategories.add(category);
+                    setLegendItemState(item, true);
+                }
+                applyMapCategoryFilter();
+            }
+
+            legendItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    toggleLegendCategory(item);
+                });
+                item.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleLegendCategory(item);
+                    }
+                });
+            });
+
+            document.getElementById('legend-select-all').addEventListener('click', function (e) {
+                e.stopPropagation();
+                activeMapCategories = new Set(ALL_MAP_CATEGORIES);
+                legendItems.forEach(function (item) { setLegendItemState(item, true); });
+                applyMapCategoryFilter();
+            });
+
+            document.getElementById('legend-clear-all').addEventListener('click', function (e) {
+                e.stopPropagation();
+                activeMapCategories = new Set();
+                legendItems.forEach(function (item) { setLegendItemState(item, false); });
+                applyMapCategoryFilter();
+            });
+
+            // Table view depends on openSidePanel (just above) and EMBEDDED_ORGANISATIONS
+            // both being ready, so only enable it now that init is fully complete.
+            document.getElementById('view-toggle').disabled = false;
 
             console.log('Setup complete');
         }
@@ -1946,7 +2092,7 @@
                 return;
             }
 
-            tableContent.innerHTML = filteredOrganisations.map(org => {
+            tableContent.innerHTML = filteredOrganisations.map((org, idx) => {
                 const type = getTypeValue(org);
                 const typeBadgeClass = getTypeBadgeClass(type);
                 
@@ -2009,7 +2155,7 @@
                 return `
                     <div class="table-row-card">
                         <div class="table-row-header">
-                            <div class="table-row-name">${org.Name || 'Unnamed'}</div>
+                            <div class="table-row-name table-row-name-clickable" data-org-index="${idx}" role="button" tabindex="0" title="Show on map">${org.Name || 'Unnamed'}</div>
                             <span class="table-row-type-badge ${typeBadgeClass}">${type}</span>
                         </div>
                         <div class="table-row-details">
@@ -2019,6 +2165,44 @@
                     </div>
                 `;
             }).join('');
+
+            // Clicking (or Enter/Space-ing) an organisation's title switches back to
+            // the map, flies to its location, and opens its side panel.
+            tableContent.querySelectorAll('.table-row-name[data-org-index]').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const idx = parseInt(el.getAttribute('data-org-index'), 10);
+                    const org = filteredOrganisations[idx];
+                    if (org) goToOrganisationOnMap(org);
+                });
+                el.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        el.click();
+                    }
+                });
+            });
+        }
+
+        // Switches from table view back to map view, flies to the organisation's
+        // location, and opens its side panel with full details.
+        function goToOrganisationOnMap(org) {
+            document.getElementById('table-view-back-btn').click();
+            // Wait for the map view switch + resize (see the back-button handler
+            // below) to finish before flying, so it has correct dimensions.
+            setTimeout(function () {
+                if (org._lon != null && org._lat != null) {
+                    map.flyTo({
+                        center: [org._lon, org._lat],
+                        zoom: 14,
+                        duration: 1200,
+                        essential: true
+                    });
+                }
+                if (typeof openSidePanel === 'function') {
+                    openSidePanel(org);
+                }
+            }, 150);
         }
 
         // Event listeners for table view
