@@ -441,6 +441,321 @@
         "Volunteering": "yes",
         "Volunteering_details": ""
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.659792369,
+          57.07103234783523
+        ]
+      },
+      "properties": {
+        "Name": "Knoydart Foundation",
+        "Type": "conservation",
+        "Description": "The Knoydart Foundation (KF) is responsible for c.17,500 acres of community-owned land on the Knoydart peninsula, following a community buyout in 1999.  Since conception, KF’s primary focuses have been managing this land in the best interests of the community and encouraging a thriving and sustainable population on Knoydart. This has already led us to environmental work such as ongoing deer management, planting new woodlands (in partnership with the Knoydart Forest Trust (KFT)), maintaining and upgrading the community-owned hydroelectric scheme, and continuing to promote the dramatic beauty of this place as a means of encouraging our visitors to connect with nature",
+        "Website": "https://knoydart.org/contact-us/",
+        "Email": "operations@knoydart.org",
+        "Phone": "",
+        "City": "Knoydart peninsula",
+        "Volunteering": "not sure",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.93599529,
+          56.2127842
+        ]
+      },
+      "properties": {
+        "Name": "Largo Communities Together",
+        "Type": "campaigning, conservation",
+        "Description": "Largo Communities Together (LCT) is a registered charity established by the community that borders and surrounds the beautiful Largo Bay in the North East of Fife. Because of our proximity to and long history with the ocean we are passionate about preserving and understanding how to play a role in marine health and re-wilding of the sea bed, firstly through the Restoration Forth Project.",
+        "Website": "https://www.largoct.org.uk/",
+        "Email": "contact@largoct.org.uk",
+        "Phone": "",
+        "City": "Largo Bay",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.318240731,
+          57.87564001
+        ]
+      },
+      "properties": {
+        "Name": "Little Loch Broom Marine Life",
+        "Type": "conservation, cleanups, education, campaigning",
+        "Description": "Little Loch Broom Marine Life is a voluntary citizen science group set up in 2019. The group conducts regular seashore surveys of Little Loch Broom to identify and learn about its diverse marine life. All the data they collect is fed into a national marine database in order for it to contribute to the evidence-base to inform decision-making.",
+        "Website": "https://www.facebook.com/people/Little-Loch-Broom-marine-Life/100068091404604/",
+        "Email": "littlelochbroommarinelife@gmail.com",
+        "Phone": "",
+        "City": "Little Loch Broom",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.113046378,
+          56.69100051
+        ]
+      },
+      "properties": {
+        "Name": "Loch Leven Sea Savers",
+        "Type": "conservation, campaigning",
+        "Description": "The Loch Leven Sea Savers was formed in 2024 alongside the Ullapool Sea Savers in a bid for the younger generations to get involved with Citizen Science. The younger generation are at the forefront of this sewage sampling and from this first major stepping stone will be for the younger generation to take on this Citizen Science Group to continue conducting scientific research.",
+        "Website": "",
+        "Email": "",
+        "Phone": "",
+        "City": "Loch Leven",
+        "Volunteering": "not sure",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.442649985,
+          56.5802477
+        ]
+      },
+      "properties": {
+        "Name": "Long Live Loch Linnhe",
+        "Type": "conservation, campaigning",
+        "Description": "Long Live Loch Linnhe was established in January 2023, launching a campaign to halt the proposed siting of a Mega Fish Farm and Industrial site on a stretch of unspoilt coastline between Appin and Duror on Loch Linnhe. Such a proposal, if successful, would have the potential to have an extremely negative, and possibly catastrophic impact on the surrounding marine and coastal area.",
+        "Website": "https://www.longlivelochlinnhe.org.uk/",
+        "Email": "info@longlivelochlinnhe.org.uk",
+        "Phone": "",
+        "City": "Loch Linnhe",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.432528974,
+          56.58367032
+        ]
+      },
+      "properties": {
+        "Name": "Marine & Coastal Conservation of Loch Linnhe (MaCCOLL)",
+        "Type": "education, conservation, research",
+        "Description": "MaCCOLL (Marine and Coastal Conservation of Loch Linnhe) is a group established by Duror and Kentallen community members which aims to increase the understanding of our marine and coastal environment and involve the whole community in its protection.\n\nWe aim to develop a programme of research, education, conservation and other activities drawing on both local and national expertise, in order to preserve this place of beauty for future generations.",
+        "Website": "https://www.maccoll.org.uk/",
+        "Email": "",
+        "Phone": "",
+        "City": "Loch Linnhe",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.517951555,
+          57.77969368
+        ]
+      },
+      "properties": {
+        "Name": "Moray Ocean Community",
+        "Type": "campaigning, Marine wildlife, conservation, research",
+        "Description": "Members of Moray Ocean Community (MOC) are based around Cromarty, Beauly and Inverness Firths, as well as along the Moray Coast.\n\nEstablished in 2022, the core aim of MOC is to promote marine citizen science in the Moray Firth area and give opportunities to people to participate in initiatives that raise awareness of the importance of the marine habitats and species we have.\n\nThey have informal collaborations with organisations like MacDuff Aquarium and Moray Firth Coastal Partnership.",
+        "Website": "https://www.morayoceancommunity.co.uk/",
+        "Email": "hello@morayoceancommunity.co.uk",
+        "Phone": "",
+        "City": "Moray Firth",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.434951992,
+          59.03567008
+        ]
+      },
+      "properties": {
+        "Name": "Orkney Skate Trust",
+        "Type": "conservation, Marine wildlife",
+        "Description": "The Orkney Skate Trust (OST) is a constituted community group focused on the conservation of the critically endangered Flapper Skate, through a series of projects spanning tag and release angling to egg case research. The OST is at the forefront of research of this little understood yet precariously rare skate, with the data suggesting that the Orkney Islands offer a strategic refuge for the species. The OST is actively involved in data collection through diving and angling activity, as well as public engagement through community science projects such as egg case collections from shorelines.",
+        "Website": "https://www.orkneyskatetrust.co.uk/",
+        "Email": "",
+        "Phone": "",
+        "City": "Orkney",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.730864025,
+          56.00721892
+        ]
+      },
+      "properties": {
+        "Name": "Plastic Free Helensburgh",
+        "Type": "cleanups",
+        "Description": "Based in Helensburgh we concerned with the health and diversity in our local blue and green environment, sustainability and the effects of climate change and how as an area we become resilient and mitigate and adapt to climate change We actively promote reduction of household waste and organise monthly beach cleans, these are a catalyst for awareness raising locally and as part of various external campaigns to lobby manufactures and distributors and to interact at local and wider political levels. Our hope is for a cleaner greener future with clear sparking seas and burn and a health ecosystem.",
+        "Website": "https://www.facebook.com/PlasticFreeHelensburgh/",
+        "Email": "plasticfreehelensburgh@gmail.com",
+        "Phone": "",
+        "City": "Helensburgh",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.717245307,
+          57.28079124
+        ]
+      },
+      "properties": {
+        "Name": "Scottish Salmon Think Tank",
+        "Type": "Marine wildlife, campaigning",
+        "Description": "Originally the ‘committee’ within a Skye community’s opposition to four salmon farm proposals 2012-2015 and thereafter as a few people involved in campaigning, the group was opened to region-wide membership in December 2024 at the screening of an Italian film about fish farming which shocked a significant number of new people. Now dedicated to improving public understanding of the environmental impacts of salmon farming in Skye and Kyle of Lochalsh through information exchange, discussion and awareness raising.",
+        "Website": "https://www.scottishsalmonthinktank.net/",
+        "Email": "",
+        "Phone": "",
+        "City": "Skye",
+        "Volunteering": "no",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.630822935,
+          57.80899172
+        ]
+      },
+      "properties": {
+        "Name": "Seabed and Seashore Loch Ewe",
+        "Type": "research, campaigning, education",
+        "Description": "Seabed and Seashore Loch Ewe is a community-led citizen science group created to investigate, promote and protect life in Loch Ewe by increasing local awareness and providing useful and accurate data to wider records, databases and maps of marine life in Scotland.",
+        "Website": "https://www.facebook.com/people/Seabed-and-Seashore-Loch-Ewe/61556290232587/",
+        "Email": "SASLochEwe@gmail.com",
+        "Phone": "",
+        "City": "Loch Ewe",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.414748362,
+          55.86353772
+        ]
+      },
+      "properties": {
+        "Name": "Tarbert Action on Coastal Litter",
+        "Type": "conservation, cleanups, education",
+        "Description": "We are a group of local volunteers who clean beaches in the Tarbert and North Kintyre area to reduce the amount of plastic and other litter entering the ocean. We aim to raise awareness of the problem working with members of the local community through a variety of different projects. This year we have worked with local schools, the Harbour Authority and a local Scout Group. We hope to engage and enthuse locals and visitors with the surrounding marine environment encouraging them to care for their local area.",
+        "Website": "https://www.facebook.com/p/TACL-Team-61563855836086/",
+        "Email": "taclteam29@gmail.com",
+        "Phone": "",
+        "City": "Tarbert",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.189556485,
+          56.0740351
+        ]
+      },
+      "properties": {
+        "Name": "The Ecology Centre",
+        "Type": "conservation, education",
+        "Description": "The Ecology Centre is a community-led charity located in Kinghorn, Fife. Over our 23 years of serving the community, we have developed strong, lasting bonds through our various activities focusing on bringing people and nature together. We currently have over 100 people registered as volunteers and our education work can engage with up to 3000 people a year.",
+        "Website": "https://www.theecologycentre.org/",
+        "Email": "",
+        "Phone": "",
+        "City": "Fife",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.175253143,
+          55.89538757
+        ]
+      },
+      "properties": {
+        "Name": "The Kyles Coastal Community Group",
+        "Type": "campaigning, conservation",
+        "Description": "The Kyles Coastal Community Group are a community of people based in and around the Kyles of Bute, who care about our sea and coast. The group is multi generational with adult and child members.\n\nThe group aims to:\n\nTake the actions available to them to improve the health of the Kyles and Loch Riddon, initially taking steps to address sewage discharge\nEstablish what life we have in the Kyles and Loch Riddon, and what there was historically, in order to\nunderstand our sea and how best to care for it.\nSupport and encourage members of the community to develop sea/coast based low- impact recreational activities, businesses and social enterprise.",
+        "Website": "https://marianthornley.wixsite.com/the-kyles-coastal-co",
+        "Email": "thekylescoastalcommunity@mail.co.uk",
+        "Phone": "",
+        "City": "Kyles of Bute",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.557712123,
+          57.51145003
+        ]
+      },
+      "properties": {
+        "Name": "Waternish Wildlife Alliance",
+        "Type": "conservation, research",
+        "Description": "Waternish is a small peninsula on the northwest of the Isle of Skye. It is a place rich in both flora and fauna, where habitats of the sea, land and air meet. The community of Waternish came together in 2025 to form the Waternish Wildlife Alliance, with the common goal to protect and sustain Waternish’s cherished biodiversity and habitats. We try to achieve this in a variety of ways, such as direct action, discussions with policymakers, citizen science projects, and informal events to get more members of the public invested in helping nature.",
+        "Website": "https://www.facebook.com/p/Waternish-Wildlife-Alliance-61578655467189/",
+        "Email": "",
+        "Phone": "",
+        "City": "Waternish",
+        "Volunteering": "yes",
+        "Volunteering_details": ""
+      }
     }
   ]
 }
