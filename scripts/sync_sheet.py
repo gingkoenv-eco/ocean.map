@@ -14,7 +14,7 @@ import re
 import sys
 
 # --- Configuration: edit these lines for your sheet -----------------------
-SHEET_ID = "PASTE_YOUR_GOOGLE_SHEET_ID_HERE"   # from the sheet's URL, the long
+SHEET_ID = "1rHbdODAygn0zJfDwMvmePOyxQKcBUuqIz75B5JjsLd4/"   # from the sheet's URL, the long
                                                  # id between /d/ and /edit
 
 # Tab names, spelled exactly as they appear at the bottom of the spreadsheet
