@@ -195,18 +195,6 @@
             overflow-wrap: break-word;
         }
 
-        .volunteering-box {
-            background-color: #f0f7ff;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 4px solid #1f4e79;
-            margin: 12px 0;
-        }
-
-        .volunteering-box .panel-label {
-            color: #1f4e79;
-        }
-
         .panel-link {
             display: inline-block;
             margin-top: 8px;
@@ -1733,27 +1721,6 @@
                     `;
                 }
 
-                // Add volunteering information (prominently displayed)
-                if (properties.Volunteering) {
-                    panelHTML += `
-                        <div class="panel-section volunteering-box">
-                            <div class="panel-label">🤝 Volunteering:</div>
-                            <div class="panel-value">${properties.Volunteering}</div>
-                        </div>
-                    `;
-
-                    // Add volunteering details if available
-                    const volunteeringDetails = properties.Volunteering_details || properties.volunteering_details;
-                    if (volunteeringDetails) {
-                        panelHTML += `
-                            <div class="panel-section">
-                                <div class="panel-label">Volunteering Details:</div>
-                                <div class="panel-value">${volunteeringDetails}</div>
-                            </div>
-                        `;
-                    }
-                }
-
                 // Add city/location if available
                 if (properties.City) {
                     panelHTML += `
@@ -1826,8 +1793,12 @@
 
             function applyMapCategoryFilter() {
                 const filtered = GEOJSON_DATA.features.filter(function (feature) {
-                    const category = getPrimaryCategory(getTypeValue(feature.properties));
-                    return activeMapCategories.has(category);
+                    // A point stays visible if it belongs to ANY currently active
+                    // category - e.g. St Abbs Marine Station (Type: "research,
+                    // conservation") appears whether you filter to Conservation OR
+                    // Research, even though its dot can only be colored one way.
+                    const categories = getAllCategories(getTypeValue(feature.properties));
+                    return categories.some(function (cat) { return activeMapCategories.has(cat); });
                 });
                 map.getSource('organisations-source').setData({
                     type: 'FeatureCollection',
@@ -1914,50 +1885,6 @@
         // ============================================================
         let allOrganisations = [];
         let filteredOrganisations = [];
-        const mapFilterState = {
-            type: '',
-            city: ''
-        };
-
-        function applyMapFilters() {
-            // Clustered GeoJSON sources need setData() to re-filter, not setFilter() -
-            // setFilter only hides individual points but clusters are pre-computed
-            // over the whole dataset, so their counts would stay wrong.
-            const filtered = GEOJSON_DATA.features.filter(function (feature) {
-                const props = feature.properties;
-
-                let matchesType = true;
-                if (mapFilterState.type) {
-                    matchesType = getPrimaryCategory(getTypeValue(props)) === mapFilterState.type;
-                }
-
-                let matchesCity = true;
-                if (mapFilterState.city) {
-                    matchesCity = props.City === mapFilterState.city;
-                }
-
-                return matchesType && matchesCity;
-            });
-
-            map.getSource('organisations-source').setData({
-                type: 'FeatureCollection',
-                features: filtered
-            });
-        }
-
-        function syncTableFilterUI() {
-            document.getElementById('filter-type').value = mapFilterState.type;
-            document.getElementById('filter-city').value = mapFilterState.city;
-        }
-
-        function resetAllFilters() {
-            document.getElementById('filter-type').value = '';
-            document.getElementById('filter-city').value = '';
-            mapFilterState.type = '';
-            mapFilterState.city = '';
-            filterOrganisations();
-            applyMapFilters();
-        }
 
         // Shared classifier: many entries have multiple comma-separated Type
         // values (e.g. "research, conservation, education"). A badge/dot can only
@@ -1983,9 +1910,27 @@
         }
 
         // Function to get the primary category a type string belongs to
-        // (used for filtering by "conservation" / "research" / "others")
+        // (used for the single-color map dot / badge)
         function getPrimaryCategory(type) {
             return getPrimaryTypeClass(type, '');
+        }
+
+        // Returns EVERY category an entry belongs to, not just the primary one -
+        // used for filtering (both the map legend filter and the table's type
+        // dropdown), so an org like "St Abbs Marine Station" (Type: "research,
+        // conservation") shows up under BOTH the Conservation filter AND the
+        // Research filter, even though its map dot can only show one color.
+        function getAllCategories(type) {
+            const typeLC = (type || '').toLowerCase();
+            const found = [];
+            if (typeLC.includes('conservation')) found.push('conservation');
+            if (typeLC.includes('marine wildlife')) found.push('marine-wildlife');
+            if (typeLC.includes('cleanups')) found.push('cleanups');
+            if (typeLC.includes('campaigning')) found.push('campaigning');
+            if (typeLC.includes('education')) found.push('education');
+            if (typeLC.includes('climate')) found.push('climate');
+            if (typeLC.includes('research')) found.push('research');
+            return found.length > 0 ? found : ['others'];
         }
 
         // Function to get type value (prioritize 'Type' field) - full display text
@@ -2050,10 +1995,6 @@
             const typeFilter = document.getElementById('filter-type').value.toLowerCase();
             const cityFilter = document.getElementById('filter-city').value;
 
-            mapFilterState.type = typeFilter;
-            mapFilterState.city = cityFilter;
-            applyMapFilters();
-
             filteredOrganisations = allOrganisations.filter(org => {
                 // Search filter
                 const matchesSearch = !searchText || 
@@ -2062,8 +2003,9 @@
                     (org.Website && org.Website.toLowerCase().includes(searchText)) ||
                     (org.Description && org.Description.toLowerCase().includes(searchText));
 
-                // Type filter (uses same priority classification as the map dots/badges)
-                const matchesType = !typeFilter || getPrimaryCategory(getTypeValue(org)) === typeFilter;
+                // Type filter - matches if the org belongs to this category at all,
+                // not only when it's the primary (color-determining) one
+                const matchesType = !typeFilter || getAllCategories(getTypeValue(org)).includes(typeFilter);
 
                 // City filter
                 const matchesCity = !cityFilter || org.City === cityFilter;
