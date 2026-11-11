@@ -756,6 +756,804 @@
         "Volunteering": "yes",
         "Volunteering_details": ""
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.139204,
+          51.517169
+        ]
+      },
+      "properties": {
+        "Name": "10% for the ocean",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.10percentfortheocean.org/",
+        "Email": "",
+        "Phone": "+44 7725 085415",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.207992,
+          51.50342
+        ]
+      },
+      "properties": {
+        "Name": "71blue",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.71blue.org",
+        "Email": "info@71blue.org",
+        "Phone": "+39 339 6934131",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.120379,
+          52.203586
+        ]
+      },
+      "properties": {
+        "Name": "BirdLife International",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.birdlife.org",
+        "Email": "birdlife@birdlife.org",
+        "Phone": "+44 1223 277318",
+        "City": "Cambridge",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.143705,
+          51.521673
+        ]
+      },
+      "properties": {
+        "Name": "Blue Ventures Conservation",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://blueventures.org/",
+        "Email": "info@blueventures.org",
+        "Phone": "+44 (0)20 3137 2867",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.077386,
+          51.527736
+        ]
+      },
+      "properties": {
+        "Name": "China Dialogue Trust",
+        "Type": "NGO",
+        "Description": "Now operates as 'Dialogue Earth'; publishes chinadialogue.net among other sites.",
+        "Website": "https://dialogue.earth",
+        "Email": "",
+        "Phone": "+44 7542 525859",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.394578,
+          50.892665
+        ]
+      },
+      "properties": {
+        "Name": "Deep Ocean Stewardship Initiative",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.dosi-project.org",
+        "Email": "DOSIcomms@gmail.com",
+        "Phone": "",
+        "City": "Southampton",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.176257,
+          55.950489
+        ]
+      },
+      "properties": {
+        "Name": "Dynamic Earth",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://dynamicearth.org.uk/",
+        "Email": "",
+        "Phone": "0131 550 7800",
+        "City": "Edinburgh",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1278,
+          51.5074
+        ]
+      },
+      "properties": {
+        "Name": "Environmental Defense Fund",
+        "Type": "NGO",
+        "Description": "US-founded NGO with a London Bridge office; no distinct UK-specific email found.",
+        "Website": "https://www.edf.org",
+        "Email": "",
+        "Phone": "",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.120379,
+          52.203586
+        ]
+      },
+      "properties": {
+        "Name": "Fauna and Flora International",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.fauna-flora.org",
+        "Email": "info@fauna-flora.org",
+        "Phone": "+44 (0)1223 571000",
+        "City": "Cambridge",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.486599,
+          51.552559
+        ]
+      },
+      "properties": {
+        "Name": "Foundation for Endangered Species",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.ffes.org.uk",
+        "Email": "info@ffes.org.uk",
+        "Phone": "01895 520184",
+        "City": "New Denham",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.939341,
+          54.35249
+        ]
+      },
+      "properties": {
+        "Name": "Freshwater Biological Association",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.fba.org.uk/",
+        "Email": "info@fba.org.uk",
+        "Phone": "01539 442468",
+        "City": "Ambleside",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.100353,
+          51.503821
+        ]
+      },
+      "properties": {
+        "Name": "Galapagos Conservation Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://galapagosconservation.org.uk",
+        "Email": "gct@gct.org",
+        "Phone": "020 7399 7440",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.152848,
+          51.540082
+        ]
+      },
+      "properties": {
+        "Name": "Global Ocean",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "http://www.globalocean.org.uk",
+        "Email": "",
+        "Phone": "020 7586 0567",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.089483,
+          51.517044
+        ]
+      },
+      "properties": {
+        "Name": "Institute of Marine Engineering Science and Technology",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.imarest.org",
+        "Email": "info@imarest.org",
+        "Phone": "+44 (0)20 7382 2600",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.155707,
+          51.53572
+        ]
+      },
+      "properties": {
+        "Name": "Institute of Zoology",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.zsl.org/science/about-ioz",
+        "Email": "enquiries@ioz.ac.uk",
+        "Phone": "020 7449 6610",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.136629,
+          51.498684
+        ]
+      },
+      "properties": {
+        "Name": "International Marine Contractors Association",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.imca-int.com",
+        "Email": "imca@imca-int.com",
+        "Phone": "+44 (0)20 7824 5520",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.118229,
+          53.208412
+        ]
+      },
+      "properties": {
+        "Name": "Lincolnshire Wildlife Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.lincstrust.org.uk",
+        "Email": "info@lincstrust.co.uk",
+        "Phone": "01507 526667",
+        "City": "Horncastle",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.10265,
+          51.516844
+        ]
+      },
+      "properties": {
+        "Name": "Marine Stewardship Council",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.msc.org",
+        "Email": "info@msc.org",
+        "Phone": "020 7246 8900",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.394578,
+          50.892665
+        ]
+      },
+      "properties": {
+        "Name": "Maritime Archaeology Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://maritimearchaeologytrust.org/",
+        "Email": "info@maritimearchaeologytrust.org",
+        "Phone": "023 8059 3290",
+        "City": "Southampton",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.154844,
+          51.475402
+        ]
+      },
+      "properties": {
+        "Name": "Mexicolore",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "http://www.mexicolore.co.uk/",
+        "Email": "",
+        "Phone": "+44 (0)20 7622 9577",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.698723,
+          56.465942
+        ]
+      },
+      "properties": {
+        "Name": "Mull and Iona Community Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.mict.co.uk",
+        "Email": "enquiries@mict.co.uk",
+        "Phone": "01680 812900",
+        "City": "Craignure",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.144474,
+          52.953138
+        ]
+      },
+      "properties": {
+        "Name": "National Biodiversity Network Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://nbn.org.uk",
+        "Email": "support@nbn.org.uk",
+        "Phone": "0115 850 0171",
+        "City": "Nottingham",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.098753,
+          51.517671
+        ]
+      },
+      "properties": {
+        "Name": "Ocean Generation",
+        "Type": "NGO",
+        "Description": "Formerly known as Plastic Oceans Foundation.",
+        "Website": "https://www.oceangeneration.org",
+        "Email": "hello@oceangeneration.org",
+        "Phone": "07624 498381",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.311482,
+          51.583656
+        ]
+      },
+      "properties": {
+        "Name": "OceanMind",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.oceanmind.global",
+        "Email": "",
+        "Phone": "+44 (0)1235 612212",
+        "City": "Didcot",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.147858,
+          50.366144
+        ]
+      },
+      "properties": {
+        "Name": "Partnership for Observation of the Global Ocean",
+        "Type": "NGO",
+        "Description": "Hosted at Plymouth Marine Laboratory.",
+        "Website": "http://www.pogo-ocean.org",
+        "Email": "",
+        "Phone": "+44 (0)1752 633424",
+        "City": "Plymouth",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.560895,
+          51.518756
+        ]
+      },
+      "properties": {
+        "Name": "Project Seagrass",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.projectseagrass.org",
+        "Email": "info@projectseagrass.org",
+        "Phone": "01656 253480",
+        "City": "Bridgend",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.122185,
+          51.520584
+        ]
+      },
+      "properties": {
+        "Name": "Sea Shepherd UK",
+        "Type": "NGO",
+        "Description": "Renamed Captain Paul Watson Foundation UK in 2023.",
+        "Website": "https://www.seashepherd.org.uk",
+        "Email": "info@seashepherd.uk",
+        "Phone": "+44 300 111 0501",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.993134,
+          52.002617
+        ]
+      },
+      "properties": {
+        "Name": "Sea Trust Wales",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.seatrust.org.uk",
+        "Email": "seatrustwales@gmail.com",
+        "Phone": "01348 688588",
+        "City": "Goodwick",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.158324,
+          50.372732
+        ]
+      },
+      "properties": {
+        "Name": "Shark Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.sharktrust.org",
+        "Email": "enquiries@sharktrust.org",
+        "Phone": "+44 (0)1752 672008",
+        "City": "Plymouth",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.447044,
+          55.009842
+        ]
+      },
+      "properties": {
+        "Name": "Solway Firth Partnership",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.solwayfirthpartnership.co.uk",
+        "Email": "info@solwayfirthpartnership.co.uk",
+        "Phone": "01387 702161",
+        "City": "Dumfries",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.8514,
+          -51.6944
+        ]
+      },
+      "properties": {
+        "Name": "South Atlantic Environmental Research Institute",
+        "Type": "NGO",
+        "Description": "HQ in Stanley, Falkland Islands (UK Overseas Territory); also has a UK registered office in London.",
+        "Website": "https://www.south-atlantic-research.org",
+        "Email": "info@saeri.ac.fk",
+        "Phone": "UK office +44 (0)20 3745 1731 / Falklands +500 27374",
+        "City": "Stanley",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.128924,
+          51.523921
+        ]
+      },
+      "properties": {
+        "Name": "Thames Estuary Partnership",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.thamesestuarypartnership.org",
+        "Email": "tep@thamesestuarypartnership.org",
+        "Phone": "020 7679 8855",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.667847,
+          50.845228
+        ]
+      },
+      "properties": {
+        "Name": "The Manta Trust",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.mantatrust.org",
+        "Email": "info@mantatrust.org",
+        "Phone": "01935 891744",
+        "City": "Corscombe",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.810879,
+          53.080332
+        ]
+      },
+      "properties": {
+        "Name": "The Wildlife Trusts",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.wildlifetrusts.org",
+        "Email": "info@wildlifetrusts.org",
+        "Phone": "01636 677711",
+        "City": "Newark",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.561909,
+          51.321117
+        ]
+      },
+      "properties": {
+        "Name": "WWF-UK",
+        "Type": "NGO",
+        "Description": "",
+        "Website": "https://www.wwf.org.uk",
+        "Email": "supportercare@wwf.org.uk",
+        "Phone": "01483 426444",
+        "City": "Woking",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1278,
+          51.5074
+        ]
+      },
+      "properties": {
+        "Name": "Work Environment & Lifelong Learning (WELL) Trust",
+        "Type": "NGO",
+        "Description": "No verifiable public website/email found.",
+        "Website": "",
+        "Email": "",
+        "Phone": "",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133025,
+          51.498734
+        ]
+      },
+      "properties": {
+        "Name": "World Resources Institute",
+        "Type": "NGO",
+        "Description": "WRI Europe office; general enquiries via wri.org contact form.",
+        "Website": "https://www.wri.org/wri-europe",
+        "Email": "",
+        "Phone": "",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.155707,
+          51.53572
+        ]
+      },
+      "properties": {
+        "Name": "Zoological Society of London, Conservation and Policy",
+        "Type": "NGO",
+        "Description": "Conservation & Policy team of ZSL, sharing Regent's Park address with the Institute of Zoology.",
+        "Website": "https://www.zsl.org",
+        "Email": "enquiries@ioz.ac.uk",
+        "Phone": "020 7449 6610",
+        "City": "London",
+        "Volunteering": "",
+        "Volunteering_details": ""
+      }
     }
   ]
 }
