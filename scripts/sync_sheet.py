@@ -20,7 +20,7 @@ SHEET_ID = "1rHbdODAygn0zJfDwMvmePOyxQKcBUuqIz75B5JjsLd4"   # from the sheet's U
 # Tab names, spelled exactly as they appear at the bottom of the spreadsheet
 # (case-sensitive). If the same organisation appears in more than one tab, the
 # tab listed first wins.
-WORKSHEET_NAMES = ["Clean", "manual-additions"]
+WORKSHEET_NAMES = ["Clean form", "manual-additions"]
 # ---------------------------------------------------------------------------
 
 OUTPUT_PATH = "organisations.json"
